@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 4.0//EN"
+        "http://www.tuckey.org/res/dtds/urlrewrite4.0.dtd">
+
+<urlrewrite>
+	<rule>
+<!--http://localhost:8080/bsong/public/index?index=1
+	>http://localhost:8080/bsong/page/1
+	http://localhost:8080/bsong/public/cat?id=2
+	>http://localhost:8080/bsong/ten-danh-muc-2
+	http://localhost:8080/bsong/public/cat?id1=2&index=1
+	>http://localhost:8080/bsong/ten-danh-muc-2/page/1
+	http://localhost:8080/bsong/public/contact
+	>http://localhost:8080/bsong/lien-he
+	http://localhost:8080/bsong/public/detail?id=37&cid=4
+	>http://localhost:8080/bsong/ten-danh-muc/ten-bai-hat-37/4.html
+ -->
+		<from>/(.+)/(.+)-([0-9]+)/([0-9]+).html$</from>
+		<to>/public/detail?id=$3&amp;cid=$4</to>
+	</rule>
+	<rule>
+		<from>/(.+)-([0-9]+)/page/([0-9]+)$</from>
+		<to>/public/cat?id=$2&amp;index=$3</to>
+	</rule>
+	<rule>
+		<from>/(.+)-([0-9]+)$</from>
+		<to>/public/cat?id=$2</to>
+	</rule>
+	<rule>
+		<from>/page/([0-9]+)$</from>
+		<to>/public/index?index=$1</to>
+	</rule>
+	<rule>
+		<from>/lien-he$</from>
+		<to>/public/contact</to>
+	</rule>
+</urlrewrite>
+
