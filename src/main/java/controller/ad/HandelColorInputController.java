@@ -1,0 +1,426 @@
+package controller.ad;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import model.bean.colur;
+import model.bean.productDetail;
+import model.dao.ColourDAO;
+import model.dao.ProductDao;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+public class HandelColorInputController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+
+    public HandelColorInputController() {
+        super();
+    }
+    public boolean existColor(ArrayList<productDetail> listPro, int id) {
+    	for (productDetail productDetail : listPro) {
+			if(productDetail.getColor_id()==id){
+				return true;
+			}
+		}
+    	return false;
+    }
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ProductDao objPrDAO = new ProductDao();
+		ColourDAO objClDAO = new ColourDAO();
+		HandelColorInputController objHandelColor = new HandelColorInputController();
+		if("".equals(request.getParameter("acolor"))==false&&request.getParameter("asku")!=null&&"".equals(request.getParameter("bcolor"))) {
+			String product_code = request.getParameter("asku");
+			ArrayList<productDetail> listPro = objPrDAO.getItemBySUK(product_code);
+			int color_id = Integer.parseInt(request.getParameter("acolor"));
+			if(listPro.size()>0) {
+				if(objHandelColor.existColor(listPro, color_id)){
+					response.getWriter().print("<div></div>");
+				}else {
+					response.getWriter().print("<div class=\"col-md-6\">"
+							+ "										<div class=\"form-group\">\r\n"
+							+ "	                                        <label>Cost *</label>\r\n"
+							+ "	                                        <input type=\"text\" class=\"form-control\" name=\"cost\" value=\"\" placeholder=\"Enter Cost\" data-errors=\"Please Enter Cost.\">\r\n"
+							+ "	                                        <label for=\"cost\" class=\"error\"></label>\r\n"
+							+ "	                                        <div class=\"help-block with-errors\"></div>\r\n"
+							+ "	                                    </div>\r\n"
+							+ "		                                </div>\r\n"
+							+ "		                                <div class=\"col-md-6\">\r\n"
+							+ "		                                    <div class=\"form-group\">\r\n"
+							+ "		                                        <label>Price *</label>\r\n"
+							+ "		                                        <input type=\"text\" class=\"form-control\" name=\"price\" value=\"\" placeholder=\"Enter Price\" data-errors=\"Please Enter Price.\">\r\n"
+							+ "		                                        <label for=\"price\" class=\"error\"></label>\r\n"
+							+ "		                                        <div class=\"help-block with-errors\"></div>\r\n"
+							+ "		                                    </div>\r\n"
+							+ "		                                </div>\r\n"
+							+ "		                                <div class=\"col-md-12\">\r\n"
+							+ "		                                    <div class=\"form-group\">\r\n"
+							+ "		                                        <label>Tax Method *</label>\r\n"
+							+ "		                                        <select name=\"type\" class=\"form-select form-control\" data-style=\"py-0\">\r\n"
+							+ "		                                            <option>Exclusive</option>\r\n"
+							+ "		                                            <option>Inclusive</option>\r\n"
+							+ "		                                        </select>\r\n"
+							+ "		                                    </div>\r\n"
+							+ "		                                </div>"
+							+ "										<div class=\"col-md-12\">\r\n"
+							+ "		                                    <div class=\"form-group\">\r\n"
+							+ "		                                        <label>Display Image </label>\r\n"
+							+ "		                                        <input type=\"file\" class=\"form-control image-file\" name=\"pic1\" accept=\"image/*\">\r\n"
+							+ "		                                    	<label for=\"pic1\" class=\"error\"></label>\r\n"
+							+ "		                                    </div>\r\n"
+							+ "	                                	</div>\r\n"
+							+ "		                             	 <div class=\"col-md-12\">\r\n"
+							+ "		                                    <div class=\"form-group\">\r\n"
+							+ "		                                        <label>Image</label>\r\n"
+							+ "		                                        <input type=\"file\" class=\"form-control image-file\" name=\"pic\" multiple=\"multiple\" accept=\"image/*\">\r\n"
+							+ "		                                    	<label for=\"pic\" class=\"error\"></label>\r\n"
+							+ "		                                    </div>\r\n"
+							+ "		                                </div>");
+				}
+			}else {
+				response.getWriter().print("<div class=\"col-md-6\">"
+						+ "										<div class=\"form-group\">\r\n"
+						+ "	                                        <label>Cost *</label>\r\n"
+						+ "	                                        <input type=\"text\" class=\"form-control\" name=\"cost\" value=\"\" placeholder=\"Enter Cost\" data-errors=\"Please Enter Cost.\">\r\n"
+						+ "	                                        <label for=\"cost\" class=\"error\"></label>\r\n"
+						+ "	                                        <div class=\"help-block with-errors\"></div>\r\n"
+						+ "	                                    </div>\r\n"
+						+ "		                                </div>\r\n"
+						+ "		                                <div class=\"col-md-6\">\r\n"
+						+ "		                                    <div class=\"form-group\">\r\n"
+						+ "		                                        <label>Price *</label>\r\n"
+						+ "		                                        <input type=\"text\" class=\"form-control\" name=\"price\" value=\"\" placeholder=\"Enter Price\" data-errors=\"Please Enter Price.\">\r\n"
+						+ "		                                        <label for=\"price\" class=\"error\"></label>\r\n"
+						+ "		                                        <div class=\"help-block with-errors\"></div>\r\n"
+						+ "		                                    </div>\r\n"
+						+ "		                                </div>\r\n"
+						+ "		                                <div class=\"col-md-12\">\r\n"
+						+ "		                                    <div class=\"form-group\">\r\n"
+						+ "		                                        <label>Tax Method *</label>\r\n"
+						+ "		                                        <select name=\"type\" class=\"form-select form-control\" data-style=\"py-0\">\r\n"
+						+ "		                                            <option>Exclusive</option>\r\n"
+						+ "		                                            <option>Inclusive</option>\r\n"
+						+ "		                                        </select>\r\n"
+						+ "		                                    </div>\r\n"
+						+ "		                                </div>"
+						+ "					<div class=\"col-md-12\">\r\n"
+						+ "		                                    <div class=\"form-group\">\r\n"
+						+ "		                                        <label>Display Image </label>\r\n"
+						+ "		                                        <input type=\"file\" class=\"form-control image-file\" name=\"pic1\" accept=\"image/*\">\r\n"
+						+ "		                                    	<label for=\"pic1\" class=\"error\"></label>\r\n"
+						+ "		                                    </div>\r\n"
+						+ "	                                	</div>\r\n"
+						+ "		                             	 <div class=\"col-md-12\">\r\n"
+						+ "		                                    <div class=\"form-group\">\r\n"
+						+ "		                                        <label>Image</label>\r\n"
+						+ "		                                        <input type=\"file\" class=\"form-control image-file\" name=\"pic\" multiple=\"multiple\" accept=\"image/*\">\r\n"
+						+ "		                                    	<label for=\"pic\" class=\"error\"></label>\r\n"
+						+ "		                                    </div>\r\n"
+						+ "		                                </div>"
+						+ "						<div class=\"col-md-12\">\r\n"
+						+ "		                                    <div class=\"form-group\">\r\n"
+						+ "		                                        <label>Outstanding Feature</label>\r\n"
+						+ "		                                        <textarea class=\"form-control ckeditor\" name=\"outstandingfeature\" rows=\"4\"></textarea>\r\n"
+						+ "		                                    	<label for=\"outstandingfeature\" class=\"error\"></label>\r\n"
+						+ "		                                    </div>\r\n"
+						+ "		                                </div>\r\n"
+						+ "		                                 <div class=\"col-md-12\">\r\n"
+						+ "		                                    <div class=\"form-group\">\r\n"
+						+ "		                                        <label>Product Details</label>\r\n"
+						+ "		                                        <textarea class=\"form-control ckeditor\" name=\"detail\" rows=\"4\"></textarea>\r\n"
+						+ "		                                   		<label for=\"detail\" class=\"error\"></label>\r\n"
+						+ "		                                    </div>\r\n"
+						+ "		                                </div> ");
+			}
+			
+		}
+		if("".equals(request.getParameter("bcolor"))==false&&request.getParameter("asku")!=null&&"".equals(request.getParameter("acolor"))) {
+			String product_code = request.getParameter("asku");
+			ArrayList<productDetail> listPro = objPrDAO.getItemBySUK(product_code);
+			String color = request.getParameter("bcolor");
+			colur objCl = objClDAO.getColorByName(color);
+			if(listPro.size()>0) {
+				if(objHandelColor.existColor(listPro, objCl.getId())){
+					response.getWriter().print("<div></div>");
+				}else {
+					response.getWriter().print("<div class=\"col-md-6\">"
+							+ "										<div class=\"form-group\">\r\n"
+							+ "	                                        <label>Cost *</label>\r\n"
+							+ "	                                        <input type=\"text\" class=\"form-control\" name=\"cost\" value=\"\" placeholder=\"Enter Cost\" data-errors=\"Please Enter Cost.\">\r\n"
+							+ "	                                        <label for=\"cost\" class=\"error\"></label>\r\n"
+							+ "	                                        <div class=\"help-block with-errors\"></div>\r\n"
+							+ "	                                    </div>\r\n"
+							+ "		                                </div>\r\n"
+							+ "		                                <div class=\"col-md-6\">\r\n"
+							+ "		                                    <div class=\"form-group\">\r\n"
+							+ "		                                        <label>Price *</label>\r\n"
+							+ "		                                        <input type=\"text\" class=\"form-control\" name=\"price\" value=\"\" placeholder=\"Enter Price\" data-errors=\"Please Enter Price.\">\r\n"
+							+ "		                                        <label for=\"price\" class=\"error\"></label>\r\n"
+							+ "		                                        <div class=\"help-block with-errors\"></div>\r\n"
+							+ "		                                    </div>\r\n"
+							+ "		                                </div>\r\n"
+							+ "		                                <div class=\"col-md-12\">\r\n"
+							+ "		                                    <div class=\"form-group\">\r\n"
+							+ "		                                        <label>Tax Method *</label>\r\n"
+							+ "		                                        <select name=\"type\" class=\"form-select form-control\" data-style=\"py-0\">\r\n"
+							+ "		                                            <option>Exclusive</option>\r\n"
+							+ "		                                            <option>Inclusive</option>\r\n"
+							+ "		                                        </select>\r\n"
+							+ "		                                    </div>\r\n"
+							+ "		                                </div>"
+							+ "						<div class=\"col-md-12\">\r\n"
+							+ "		                                    <div class=\"form-group\">\r\n"
+							+ "		                                        <label>Display Image </label>\r\n"
+							+ "		                                        <input type=\"file\" class=\"form-control image-file\" name=\"pic1\" accept=\"image/*\">\r\n"
+							+ "		                                    	<label for=\"pic1\" class=\"error\"></label>\r\n"
+							+ "		                                    </div>\r\n"
+							+ "	                                	</div>\r\n"
+							+ "		                             	 <div class=\"col-md-12\">\r\n"
+							+ "		                                    <div class=\"form-group\">\r\n"
+							+ "		                                        <label>Image</label>\r\n"
+							+ "		                                        <input type=\"file\" class=\"form-control image-file\" name=\"pic\" multiple=\"multiple\" accept=\"image/*\">\r\n"
+							+ "		                                    	<label for=\"pic\" class=\"error\"></label>\r\n"
+							+ "		                                    </div>\r\n"
+							+ "		                                </div> ");
+				}
+			}else {
+				response.getWriter().print("<div class=\"col-md-6\">"
+						+ "										<div class=\"form-group\">\r\n"
+						+ "	                                        <label>Cost *</label>\r\n"
+						+ "	                                        <input type=\"text\" class=\"form-control\" name=\"cost\" value=\"\" placeholder=\"Enter Cost\" data-errors=\"Please Enter Cost.\">\r\n"
+						+ "	                                        <label for=\"cost\" class=\"error\"></label>\r\n"
+						+ "	                                        <div class=\"help-block with-errors\"></div>\r\n"
+						+ "	                                    </div>\r\n"
+						+ "		                                </div>\r\n"
+						+ "		                                <div class=\"col-md-6\">\r\n"
+						+ "		                                    <div class=\"form-group\">\r\n"
+						+ "		                                        <label>Price *</label>\r\n"
+						+ "		                                        <input type=\"text\" class=\"form-control\" name=\"price\" value=\"\" placeholder=\"Enter Price\" data-errors=\"Please Enter Price.\">\r\n"
+						+ "		                                        <label for=\"price\" class=\"error\"></label>\r\n"
+						+ "		                                        <div class=\"help-block with-errors\"></div>\r\n"
+						+ "		                                    </div>\r\n"
+						+ "		                                </div>\r\n"
+						+ "		                                <div class=\"col-md-12\">\r\n"
+						+ "		                                    <div class=\"form-group\">\r\n"
+						+ "		                                        <label>Tax Method *</label>\r\n"
+						+ "		                                        <select name=\"type\" class=\"form-select form-control\" data-style=\"py-0\">\r\n"
+						+ "		                                            <option>Exclusive</option>\r\n"
+						+ "		                                            <option>Inclusive</option>\r\n"
+						+ "		                                        </select>\r\n"
+						+ "		                                    </div>\r\n"
+						+ "		                                </div>"
+						+ "						<div class=\"col-md-12\">\r\n"
+						+ "		                                    <div class=\"form-group\">\r\n"
+						+ "		                                        <label>Display Image </label>\r\n"
+						+ "		                                        <input type=\"file\" class=\"form-control image-file\" name=\"pic1\" accept=\"image/*\">\r\n"
+						+ "		                                    	<label for=\"pic1\" class=\"error\"></label>\r\n"
+						+ "		                                    </div>\r\n"
+						+ "	                                	</div>\r\n"
+						+ "		                             	 <div class=\"col-md-12\">\r\n"
+						+ "		                                    <div class=\"form-group\">\r\n"
+						+ "		                                        <label>Image</label>\r\n"
+						+ "		                                        <input type=\"file\" class=\"form-control image-file\" name=\"pic\" multiple=\"multiple\" accept=\"image/*\">\r\n"
+						+ "		                                    	<label for=\"pic\" class=\"error\"></label>\r\n"
+						+ "		                                    </div>\r\n"
+						+ "		                                </div>"
+						+ "					<div class=\"col-md-12\">\r\n"
+						+ "		                                    <div class=\"form-group\">\r\n"
+						+ "		                                        <label>Outstanding Feature</label>\r\n"
+						+ "		                                        <textarea class=\"form-control ckeditor\" name=\"outstandingfeature\" rows=\"4\"></textarea>\r\n"
+						+ "		                                    	<label for=\"outstandingfeature\" class=\"error\"></label>\r\n"
+						+ "		                                    </div>\r\n"
+						+ "		                                </div>\r\n"
+						+ "		                                 <div class=\"col-md-12\">\r\n"
+						+ "		                                    <div class=\"form-group\">\r\n"
+						+ "		                                        <label>Product Details</label>\r\n"
+						+ "		                                        <textarea class=\"form-control ckeditor\" name=\"detail\" rows=\"4\"></textarea>\r\n"
+						+ "		                                   		<label for=\"detail\" class=\"error\"></label>\r\n"
+						+ "		                                    </div>\r\n"
+						+ "		                                </div> ");
+			}
+			
+		}
+		if("".equals(request.getParameter("bcolor"))==false&&request.getParameter("asku")==null&&"".equals(request.getParameter("acolor"))) {
+			response.getWriter().print("<div class=\"col-md-6\">"
+					+ "										<div class=\"form-group\">\r\n"
+					+ "	                                        <label>Cost *</label>\r\n"
+					+ "	                                        <input type=\"text\" class=\"form-control\" name=\"cost\" value=\"\" placeholder=\"Enter Cost\" data-errors=\"Please Enter Cost.\">\r\n"
+					+ "	                                        <label for=\"cost\" class=\"error\"></label>\r\n"
+					+ "	                                        <div class=\"help-block with-errors\"></div>\r\n"
+					+ "	                                    </div>\r\n"
+					+ "		                                </div>\r\n"
+					+ "		                                <div class=\"col-md-6\">\r\n"
+					+ "		                                    <div class=\"form-group\">\r\n"
+					+ "		                                        <label>Price *</label>\r\n"
+					+ "		                                        <input type=\"text\" class=\"form-control\" name=\"price\" value=\"\" placeholder=\"Enter Price\" data-errors=\"Please Enter Price.\">\r\n"
+					+ "		                                        <label for=\"price\" class=\"error\"></label>\r\n"
+					+ "		                                        <div class=\"help-block with-errors\"></div>\r\n"
+					+ "		                                    </div>\r\n"
+					+ "		                                </div>\r\n"
+					+ "		                                <div class=\"col-md-12\">\r\n"
+					+ "		                                    <div class=\"form-group\">\r\n"
+					+ "		                                        <label>Tax Method *</label>\r\n"
+					+ "		                                        <select name=\"type\" class=\"form-select form-control\" data-style=\"py-0\">\r\n"
+					+ "		                                            <option>Exclusive</option>\r\n"
+					+ "		                                            <option>Inclusive</option>\r\n"
+					+ "		                                        </select>\r\n"
+					+ "		                                    </div>\r\n"
+					+ "		                                </div>"
+					+ "						<div class=\"col-md-12\">\r\n"
+					+ "		                                    <div class=\"form-group\">\r\n"
+					+ "		                                        <label>Display Image </label>\r\n"
+					+ "		                                        <input type=\"file\" class=\"form-control image-file\" name=\"pic1\" accept=\"image/*\">\r\n"
+					+ "		                                    	<label for=\"pic1\" class=\"error\"></label>\r\n"
+					+ "		                                    </div>\r\n"
+					+ "	                                	</div>\r\n"
+					+ "		                             	 <div class=\"col-md-12\">\r\n"
+					+ "		                                    <div class=\"form-group\">\r\n"
+					+ "		                                        <label>Image</label>\r\n"
+					+ "		                                        <input type=\"file\" class=\"form-control image-file\" name=\"pic\" multiple=\"multiple\" accept=\"image/*\">\r\n"
+					+ "		                                    	<label for=\"pic\" class=\"error\"></label>\r\n"
+					+ "		                                    </div>\r\n"
+					+ "		                                </div>");
+		}
+		if("".equals(request.getParameter("bcolor"))&&request.getParameter("asku")==null&&"".equals(request.getParameter("acolor"))==false) {
+			response.getWriter().print("<div class=\"col-md-6\">"
+					+ "										<div class=\"form-group\">\r\n"
+					+ "	                                        <label>Cost *</label>\r\n"
+					+ "	                                        <input type=\"text\" class=\"form-control\" name=\"cost\" value=\"\" placeholder=\"Enter Cost\" data-errors=\"Please Enter Cost.\">\r\n"
+					+ "	                                        <label for=\"cost\" class=\"error\"></label>\r\n"
+					+ "	                                        <div class=\"help-block with-errors\"></div>\r\n"
+					+ "	                                    </div>\r\n"
+					+ "		                                </div>\r\n"
+					+ "		                                <div class=\"col-md-6\">\r\n"
+					+ "		                                    <div class=\"form-group\">\r\n"
+					+ "		                                        <label>Price *</label>\r\n"
+					+ "		                                        <input type=\"text\" class=\"form-control\" name=\"price\" value=\"\" placeholder=\"Enter Price\" data-errors=\"Please Enter Price.\">\r\n"
+					+ "		                                        <label for=\"price\" class=\"error\"></label>\r\n"
+					+ "		                                        <div class=\"help-block with-errors\"></div>\r\n"
+					+ "		                                    </div>\r\n"
+					+ "		                                </div>\r\n"
+					+ "		                                <div class=\"col-md-12\">\r\n"
+					+ "		                                    <div class=\"form-group\">\r\n"
+					+ "		                                        <label>Tax Method *</label>\r\n"
+					+ "		                                        <select name=\"type\" class=\"form-select form-control\" data-style=\"py-0\">\r\n"
+					+ "		                                            <option>Exclusive</option>\r\n"
+					+ "		                                            <option>Inclusive</option>\r\n"
+					+ "		                                        </select>\r\n"
+					+ "		                                    </div>\r\n"
+					+ "		                                </div>"
+					+ "					<div class=\"col-md-12\">\r\n"
+					+ "		                                    <div class=\"form-group\">\r\n"
+					+ "		                                        <label>Display Image </label>\r\n"
+					+ "		                                        <input type=\"file\" class=\"form-control image-file\" name=\"pic1\" accept=\"image/*\">\r\n"
+					+ "		                                    	<label for=\"pic1\" class=\"error\"></label>\r\n"
+					+ "		                                    </div>\r\n"
+					+ "	                                	</div>\r\n"
+					+ "		                             	 <div class=\"col-md-12\">\r\n"
+					+ "		                                    <div class=\"form-group\">\r\n"
+					+ "		                                        <label>Image</label>\r\n"
+					+ "		                                        <input type=\"file\" class=\"form-control image-file\" name=\"pic\" multiple=\"multiple\" accept=\"image/*\">\r\n"
+					+ "		                                    	<label for=\"pic\" class=\"error\"></label>\r\n"
+					+ "		                                    </div>\r\n"
+					+ "		                                </div>");
+		}
+		if("".equals(request.getParameter("acolor"))==false&&"".equals(request.getParameter("bcolor"))==false&&request.getParameter("asku")==null) {
+			response.getWriter().print("<div class=\"col-md-6\">"
+					+ "										<div class=\"form-group\">\r\n"
+					+ "	                                        <label>Cost *</label>\r\n"
+					+ "	                                        <input type=\"text\" class=\"form-control\" name=\"cost\" value=\"\" placeholder=\"Enter Cost\" data-errors=\"Please Enter Cost.\">\r\n"
+					+ "	                                        <label for=\"cost\" class=\"error\"></label>\r\n"
+					+ "	                                        <div class=\"help-block with-errors\"></div>\r\n"
+					+ "	                                    </div>\r\n"
+					+ "		                                </div>\r\n"
+					+ "		                                <div class=\"col-md-6\">\r\n"
+					+ "		                                    <div class=\"form-group\">\r\n"
+					+ "		                                        <label>Price *</label>\r\n"
+					+ "		                                        <input type=\"text\" class=\"form-control\" name=\"price\" value=\"\" placeholder=\"Enter Price\" data-errors=\"Please Enter Price.\">\r\n"
+					+ "		                                        <label for=\"price\" class=\"error\"></label>\r\n"
+					+ "		                                        <div class=\"help-block with-errors\"></div>\r\n"
+					+ "		                                    </div>\r\n"
+					+ "		                                </div>\r\n"
+					+ "		                                <div class=\"col-md-12\">\r\n"
+					+ "		                                    <div class=\"form-group\">\r\n"
+					+ "		                                        <label>Tax Method *</label>\r\n"
+					+ "		                                        <select name=\"type\" class=\"form-select form-control\" data-style=\"py-0\">\r\n"
+					+ "		                                            <option>Exclusive</option>\r\n"
+					+ "		                                            <option>Inclusive</option>\r\n"
+					+ "		                                        </select>\r\n"
+					+ "		                                    </div>\r\n"
+					+ "		                                </div>"
+					+ "					<div class=\"col-md-12\">\r\n"
+					+ "		                                    <div class=\"form-group\">\r\n"
+					+ "		                                        <label>Display Image </label>\r\n"
+					+ "		                                        <input type=\"file\" class=\"form-control image-file\" name=\"pic1\" accept=\"image/*\">\r\n"
+					+ "		                                    	<label for=\"pic1\" class=\"error\"></label>\r\n"
+					+ "		                                    </div>\r\n"
+					+ "	                                	</div>\r\n"
+					+ "		                             	 <div class=\"col-md-12\">\r\n"
+					+ "		                                    <div class=\"form-group\">\r\n"
+					+ "		                                        <label>Image</label>\r\n"
+					+ "		                                        <input type=\"file\" class=\"form-control image-file\" name=\"pic\" multiple=\"multiple\" accept=\"image/*\">\r\n"
+					+ "		                                    	<label for=\"pic\" class=\"error\"></label>\r\n"
+					+ "		                                    </div>\r\n"
+					+ "		                                </div>"
+					+ "					<script type=\"text/javascript\">\r\n"
+					+ "      				 $(document).ready(function() {\r\n"
+					+ "      		 			alert(\"Chỉ được nhập một trong 2 mục của color\");\r\n"
+					+ "      	 			});\r\n"
+					+ "					</script>");
+		}
+		if("".equals(request.getParameter("acolor"))==false&&"".equals(request.getParameter("bcolor"))==false&&request.getParameter("asku")!=null) {
+			response.getWriter().print("<div class=\"col-md-6\">"
+					+ "										<div class=\"form-group\">\r\n"
+					+ "	                                        <label>Cost *</label>\r\n"
+					+ "	                                        <input type=\"text\" class=\"form-control\" name=\"cost\" value=\"\" placeholder=\"Enter Cost\" data-errors=\"Please Enter Cost.\">\r\n"
+					+ "	                                        <label for=\"cost\" class=\"error\"></label>\r\n"
+					+ "	                                        <div class=\"help-block with-errors\"></div>\r\n"
+					+ "	                                    </div>\r\n"
+					+ "		                                </div>\r\n"
+					+ "		                                <div class=\"col-md-6\">\r\n"
+					+ "		                                    <div class=\"form-group\">\r\n"
+					+ "		                                        <label>Price *</label>\r\n"
+					+ "		                                        <input type=\"text\" class=\"form-control\" name=\"price\" value=\"\" placeholder=\"Enter Price\" data-errors=\"Please Enter Price.\">\r\n"
+					+ "		                                        <label for=\"price\" class=\"error\"></label>\r\n"
+					+ "		                                        <div class=\"help-block with-errors\"></div>\r\n"
+					+ "		                                    </div>\r\n"
+					+ "		                                </div>\r\n"
+					+ "		                                <div class=\"col-md-12\">\r\n"
+					+ "		                                    <div class=\"form-group\">\r\n"
+					+ "		                                        <label>Tax Method *</label>\r\n"
+					+ "		                                        <select name=\"type\" class=\"form-select form-control\" data-style=\"py-0\">\r\n"
+					+ "		                                            <option>Exclusive</option>\r\n"
+					+ "		                                            <option>Inclusive</option>\r\n"
+					+ "		                                        </select>\r\n"
+					+ "		                                    </div>\r\n"
+					+ "		                                </div>"
+					+ "					<div class=\"col-md-12\">\r\n"
+					+ "		                                    <div class=\"form-group\">\r\n"
+					+ "		                                        <label>Display Image </label>\r\n"
+					+ "		                                        <input type=\"file\" class=\"form-control image-file\" name=\"pic1\" accept=\"image/*\">\r\n"
+					+ "		                                    	<label for=\"pic1\" class=\"error\"></label>\r\n"
+					+ "		                                    </div>\r\n"
+					+ "	                                	</div>\r\n"
+					+ "		                             	 <div class=\"col-md-12\">\r\n"
+					+ "		                                    <div class=\"form-group\">\r\n"
+					+ "		                                        <label>Image</label>\r\n"
+					+ "		                                        <input type=\"file\" class=\"form-control image-file\" name=\"pic\" multiple=\"multiple\" accept=\"image/*\">\r\n"
+					+ "		                                    	<label for=\"pic\" class=\"error\"></label>\r\n"
+					+ "		                                    </div>\r\n"
+					+ "		                                </div>"
+					+ "					<script type=\"text/javascript\">\r\n"
+					+ "      	 			$(document).ready(function() {\r\n"
+					+ "      		 			alert(\"Chỉ được nhập một trong 2 mục của color\");\r\n"
+					+ "      				 });\r\n"
+					+ "					</script>");
+		}
+	}
+
+}

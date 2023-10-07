@@ -1,0 +1,209 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>yody</groupId>
+  <artifactId>yody</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <build>
+    <resources>
+      <resource>
+        <directory>src/main/java</directory>
+        <excludes>
+          <exclude>**/*.java</exclude>
+        </excludes>
+      </resource>
+    </resources>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <release>17</release>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.2.3</version>
+      </plugin>
+    </plugins>
+    <finalName>LearnJSPServletWithRealApps</finalName>
+  </build>
+  <repositories>
+      <repository>
+          <id>AsposeJavaAPI</id>
+          <name>Aspose Java API</name>
+          <url>https://releases.aspose.com/java/repo/</url>
+      </repository>
+      <repository>
+        <id>com.e-iceblue</id>
+        <name>e-iceblue</name>
+        <url>https://repo.e-iceblue.com/nexus/content/groups/public/</url>
+    </repository>
+</repositories>
+  <dependencies>
+  <dependency>
+        <groupId>com.aspose</groupId>
+        <artifactId>aspose-cells</artifactId>
+        <version>23.5</version>
+    </dependency>
+    <dependency>
+        <groupId>com.aspose</groupId>
+        <artifactId>aspose-cells</artifactId>
+        <version>23.5</version>
+        <classifier>javadoc</classifier>
+    </dependency>
+    <dependency>
+        <groupId>org.bouncycastle</groupId>
+        <artifactId>bcprov-jdk15on</artifactId>
+        <version>1.60</version>
+    </dependency>
+    <dependency>
+        <groupId>org.bouncycastle</groupId>
+        <artifactId>bcpkix-jdk15on</artifactId>
+        <version>1.60</version>
+    </dependency> 
+    <dependency>
+        <groupId>e-iceblue</groupId>
+        <artifactId>spire.xls</artifactId>
+        <version>12.8.4</version>
+    </dependency>
+    <dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>5.1.46</version>
+    <scope>runtime</scope>
+</dependency>
+<dependency>
+    <groupId>org.apache.poi</groupId>
+    <artifactId>poi-ooxml</artifactId>
+    <version>4.1.0</version>
+</dependency>    
+  	<!-- https://mvnrepository.com/artifact/jakarta.servlet.jsp.jstl/jakarta.servlet.jsp.jstl-api -->
+<dependency>
+    <groupId>jakarta.servlet.jsp.jstl</groupId>
+    <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+    <version>3.0.0</version>
+</dependency>
+  	<!-- https://mvnrepository.com/artifact/jakarta.mail/jakarta.mail-api -->
+<dependency>
+    <groupId>jakarta.mail</groupId>
+    <artifactId>jakarta.mail-api</artifactId>
+    <version>2.1.1</version>
+</dependency>
+
+	<dependency>
+    	<groupId>org.apache.commons</groupId>
+    	<artifactId>commons-lang3</artifactId>
+    	<version>3.8.1</version>
+	</dependency>
+	<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+<dependency>
+    <groupId>jakarta.servlet.jsp.jstl</groupId>
+    <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+    <version>3.0.0</version>
+</dependency>
+		<dependency>
+			<groupId>taglibs</groupId>
+			<artifactId>standard</artifactId>
+			<version>1.1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
+			<version>6.0.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.paypal.sdk/paypal-core -->
+<dependency>
+    <groupId>com.paypal.sdk</groupId>
+    <artifactId>paypal-core</artifactId>
+    <version>1.7.2</version>
+</dependency>
+<dependency>
+    <groupId>com.paypal.sdk</groupId>
+    <artifactId>rest-api-sdk</artifactId>
+    <version>1.14.0</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/com.mashape.unirest/unirest-java -->
+<dependency>
+    <groupId>com.mashape.unirest</groupId>
+    <artifactId>unirest-java</artifactId>
+    <version>1.4.9</version>
+</dependency>
+<dependency>
+    <groupId>org.thymeleaf</groupId>
+    <artifactId>thymeleaf</artifactId>
+    <version>3.0.13.RELEASE</version>
+</dependency>
+
+<dependency>
+    <groupId>org.xhtmlrenderer</groupId>
+    <artifactId>flying-saucer-pdf</artifactId>
+    <version>9.1.22</version>
+</dependency>
+ <dependency>
+     <groupId>com.google.api-client</groupId>
+     <artifactId>google-api-client</artifactId>
+     <version>1.32.1</version>
+   </dependency>
+   <dependency>
+  <groupId>com.google.api-client</groupId>
+  <artifactId>google-api-client</artifactId>
+  <version>2.0.0</version>
+</dependency>
+<dependency>
+  <groupId>com.google.api-client</groupId>
+  <artifactId>google-api-client</artifactId>
+  <version>2.0.0</version>
+  <exclusions>
+    <exclusion>
+      <artifactId>xpp3</artifactId>
+      <groupId>xpp3</groupId>
+    </exclusion>
+    <exclusion>
+      <artifactId>httpclient</artifactId>
+      <groupId>org.apache.httpcomponents</groupId>
+    </exclusion>
+    <exclusion>
+      <artifactId>junit</artifactId>
+      <groupId>junit</groupId>
+    </exclusion>
+    <exclusion>
+      <artifactId>android</artifactId>
+      <groupId>com.google.android</groupId>
+    </exclusion>
+  </exclusions>
+</dependency>
+<dependency>
+  <groupId>com.google.api-client</groupId>
+  <artifactId>google-api-client-android</artifactId>
+  <version>2.0.0</version>
+</dependency>
+<dependency>
+  <groupId>com.google.api-client</groupId>
+  <artifactId>google-api-client-servlet</artifactId>
+  <version>2.0.0</version>
+</dependency>
+ <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpclient</artifactId>
+        <version>4.5.13</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/fluent-hc -->
+<dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>fluent-hc</artifactId>
+    <version>4.5.14</version>
+</dependency>
+  <dependency>
+    <groupId>com.itextpdf</groupId>
+    <artifactId>itextpdf</artifactId>
+    <version>5.5.13.3</version>
+</dependency>
+  </dependencies>
+</project>

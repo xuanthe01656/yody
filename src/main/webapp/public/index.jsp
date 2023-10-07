@@ -1,594 +1,824 @@
+<%@page import="library.RemoveDuplicateElements"%>
+<%@page import="model.bean.colur"%>
+<%@page import="java.io.File"%>
+<%@page import="model.bean.ProductAdmin"%>
+<%@page import="model.bean.DisplayPublic"%>
+<%@page import="model.dao.PublicDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/templates/public/inc/header.jsp" %>
+
     <!-- =====  BANNER STRAT  ===== -->
     <div class="container banner mt_20">
       <div class="main-banner owl-carousel">
-        <div class="item"><a href="#"><img src="<%=request.getContextPath() %>/templates/public/assets/images/main_banner1.jpg" alt="Main Banner" class="img-responsive" /></a></div>
-        <div class="item"><a href="#"><img src="<%=request.getContextPath() %>/templates/public/assets/images/main_banner2.jpg" alt="Main Banner" class="img-responsive" /></a></div>
+        <div class="item"><a href="#"><img src="<%=request.getContextPath() %>/templates/admin/assets/images/table/imgbanner/slider_1.jpg" alt="Main Banner" class="img-responsive" /></a></div>
+        <div class="item"><a href="#"><img src="<%=request.getContextPath() %>/templates/admin/assets/images/table/imgbanner/slider_3.jpg" alt="Main Banner" class="img-responsive" /></a></div>
+      	<div class="item"><a href="<%=request.getContextPath() %>/public/show-more-product?id=7"><img src="<%=request.getContextPath() %>/templates/admin/assets/images/table/imgbanner/slider_4.jpg" alt="Main Banner" class="img-responsive" /></a></div>
       </div>
     </div>
     <!-- =====  BANNER END  ===== -->
-    <!-- =====  CONTAINER START  ===== -->
-    <div class="container">
-      <!-- =====  SUB BANNER  STRAT ===== -->
-      <div class="row">
-        <div class="cms_banner mt_10">
-          <div class="col-xs-4 mt_10">
-            <div id="subbanner1" class="sub-hover">
-              <div class="sub-img"><a href="#"><img src="<%=request.getContextPath() %>/templates/public/assets/images/sub1.jpg" alt="Sub Banner1" class="img-responsive"></a></div>
-              <div class="bannertext text-center">
-                <button class="btn mb_10 cms_btn">Xem Sản Phẩm</button>
-                <h2>Hats & collapse</h2>
-                <p class="mt_10">Wide veriety of sizes,colors</p>
-              </div>
-            </div>
-            <div id="subbanner2" class="sub-hover mt_20">
-              <div class="sub-img"><a href="#"><img src="<%=request.getContextPath() %>/templates/public/assets/images/sub2.jpg" alt="Sub Banner2" class="img-responsive"></a></div>
-              <div class="bannertext text-center">
-                <button class="btn mb_10 cms_btn">Xem Sản Phẩm</button>
-                <h2>Buy Scarfs</h2>
-                <p class="mt_10">Shop collection of designer</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-xs-4 mt_10">
-            <div id="subbanner3" class="sub-hover">
-              <div class="sub-img"> <a href="#"><img src="<%=request.getContextPath() %>/templates/public/assets/images/sub3.jpg" alt="Sub Banner3" class="img-responsive"></a></div>
-            </div>
-          </div>
-          <div class="col-xs-4 mt_10">
-            <div id="subbanner4" class="sub-hover">
-              <div class="sub-img"><a href="#"><img src="<%=request.getContextPath() %>/templates/public/assets/images/sub4.jpg" alt="Sub Banner4" class="img-responsive"></a></div>
-              <div class="bannertext text-center">
-                <button class="btn mb_10 cms_btn">Xem Sản Phẩm</button>
-                <h2>Handbags</h2>
-                <p class="mt_10">Bags for men & women only</p>
-              </div>
-            </div>
-            <div id="subbanner5" class="sub-hover mt_20">
-              <div class="sub-img"><a href="#"><img src="<%=request.getContextPath() %>/templates/public/assets/images/sub5.jpg" alt="Sub Banner5" class="img-responsive"></a></div>
-              <div class="bannertext text-center">
-                <button class="btn mb_10 cms_btn">Xem Sản Phẩm</button>
-                <h2>Footware</h2>
-                <p class="mt_10">Over 400 luxury designers</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- =====  SUB BANNER END  ===== -->
-      <div class="row ">
-        <div class="col-sm-12 mtb_10">
-          <!-- =====  PRODUCT TAB  ===== -->
-          <div id="product-tab" class="mt_50">
-            <div class="heading-part mb_10 ">
-              <h2 class="main_title">Đồ Thời Trang</h2>
-            </div>
-            <ul class="nav text-right">
-              <li class="active"> <a href="#nArrivals" data-toggle="tab">Điểm Đến Yêu Thích</a> </li>
-              <li><a href="#Bestsellers" data-toggle="tab">Bán Chạy Nhất</a> </li>
-              <li><a href="#Featured" data-toggle="tab">Đặc Sắc</a> </li>
-            </ul>
-            <div class="tab-content clearfix box">
-              <div class="tab-pane active" id="nArrivals">
-                <div class="nArrivals owl-carousel">
-                  <div class="product-grid">
-                    <div class="item">
-                      <div class="product-thumb">
-                        <div class="image product-imageblock"> <a href="<%=request.getContextPath() %>/public/product_detail_page.jsp"> <img data-name="product_image" src="<%=request.getContextPath() %>/templates/public/assets/images/product/product9.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="<%=request.getContextPath() %>/templates/public/assets/images/product/product9-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
-                          <div class="button-group text-center">
-                            <div class="wishlist"><a href="#"><span>Danh Sách Yêu Thích</span></a></div>
-                            <div class="quickview"><a href="#"><span>Xem Nhanh</span></a></div>
-                            <div class="compare"><a href="#"><span>So Sánh</span></a></div>
-                            <div class="add-to-cart"><a href="#"><span>Thêm vào giỏ hàng</span></a></div>
-                          </div>
-                        </div>
-                        <div class="caption product-detail text-center">
-                          <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-                          <h6 data-name="product_name" class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">New LCDScreen and HD Vide..</a></h6>
-                          <span class="price"><span class="amount"><span class="currencySymbol">VND</span>xx.xxx</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product-grid">
-                    <div class="item">
-                      <div class="product-thumb">
-                        <div class="image product-imageblock"> <a href="<%=request.getContextPath() %>/public/product_detail_page.jsp"> <img data-name="product_image" src="<%=request.getContextPath() %>/templates/public/assets/images/product/product1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="<%=request.getContextPath() %>/templates/public/assets/images/product/product1-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
-                          <div class="button-group text-center">
-                            <div class="wishlist"><a href="#"><span>Danh Sách Yêu Thích</span></a></div>
-                            <div class="quickview"><a href="#"><span>Xem Nhanh</span></a></div>
-                            <div class="compare"><a href="#"><span>So Sánh</span></a></div>
-                            <div class="add-to-cart"><a href="#"><span>Thêm vào giỏ hàng</span></a></div>
-                          </div>
-                        </div>
-                        <div class="caption product-detail text-center">
-                          <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-                          <h6 data-name="product_name" class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">New LCDScreen and HD Vide..</a></h6>
-                          <span class="price"><span class="amount"><span class="currencySymbol">VND</span>xx.xxx</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product-grid">
-                    <div class="item">
-                      <div class="product-thumb">
-                        <div class="image product-imageblock"> <a href="<%=request.getContextPath() %>/public/product_detail_page.jsp"> <img data-name="product_image" src="<%=request.getContextPath() %>/templates/public/assets/images/product/product3.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="<%=request.getContextPath() %>/templates/public/assets/images/product/product3-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
-                          <div class="button-group text-center">
-                            <div class="wishlist"><a href="#"><span>Danh Sách Yêu Thích</span></a></div>
-                            <div class="quickview"><a href="#"><span>Xem Nhanh</span></a></div>
-                            <div class="compare"><a href="#"><span>So Sánh</span></a></div>
-                            <div class="add-to-cart"><a href="#"><span>Thêm Vào Giỏ Hàng</span></a></div>
-                          </div>
-                        </div>
-                        <div class="caption product-detail text-center">
-                          <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-                          <h6 data-name="product_name" class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">New LCDScreen and HD Vide..</a></h6>
-                          <span class="price"><span class="amount"><span class="currencySymbol">VND</span>xx.xxx</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product-grid">
-                    <div class="item">
-                      <div class="product-thumb">
-                        <div class="image product-imageblock"> <a href="<%=request.getContextPath() %>/public/product_detail_page.jsp"> <img data-name="product_image" src="<%=request.getContextPath() %>/templates/public/assets/images/product/product5.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="<%=request.getContextPath() %>/templates/public/assets/images/product/product5-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
-                          <div class="button-group text-center">
-                            <div class="wishlist"><a href="#"><span>Danh Sách Yêu Thích</span></a></div>
-                            <div class="quickview"><a href="#"><span>Xem Nhanh</span></a></div>
-                            <div class="compare"><a href="#"><span>So Sánh</span></a></div>
-                            <div class="add-to-cart"><a href="#"><span>Thêm Vào Giỏ Hàng</span></a></div>
-                          </div>
-                        </div>
-                        <div class="caption product-detail text-center">
-                          <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-                          <h6 data-name="product_name" class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">New LCDScreen and HD Vide..</a></h6>
-                          <span class="price"><span class="amount"><span class="currencySymbol">VND</span>xx.xxx</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product-grid">
-                    <div class="item">
-                      <div class="product-thumb  mb_30">
-                        <div class="image product-imageblock"> <a href="<%=request.getContextPath() %>/public/product_detail_page.jsp"> <img data-name="product_image" src="<%=request.getContextPath() %>/templates/public/assets/images/product/product7.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="<%=request.getContextPath() %>/templates/public/assets/images/product/product7-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
-                          <div class="button-group text-center">
-                            <div class="wishlist"><a href="#"><span>Danh Sách Yêu Thích</span></a></div>
-                            <div class="quickview"><a href="#"><span>Xem Nhanh</span></a></div>
-                            <div class="compare"><a href="#"><span>So Sánh</span></a></div>
-                            <div class="add-to-cart"><a href="#"><span>Thêm Vào Giỏ Hàng</span></a></div>
-                          </div>
-                        </div>
-                        <div class="caption product-detail text-center">
-                          <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-                          <h6 data-name="product_name" class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">New LCDScreen and HD Vide..</a></h6>
-                          <span class="price"><span class="amount"><span class="currencySymbol">VND</span>xx.xxx</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product-grid">
-                    <div class="item">
-                      <div class="product-thumb  mb_30">
-                        <div class="image product-imageblock"> <a href="<%=request.getContextPath() %>/public/product_detail_page.jsp"> <img data-name="product_image" src="<%=request.getContextPath() %>/templates/public/assets/images/product/product9.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="<%=request.getContextPath() %>/templates/public/assets/images/product/product9-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
-                          <div class="button-group text-center">
-                            <div class="wishlist"><a href="#"><span>Danh Sách Yêu Thích</span></a></div>
-                            <div class="quickview"><a href="#"><span>Xem Nhanh</span></a></div>
-                            <div class="compare"><a href="#"><span>So Sánh</span></a></div>
-                            <div class="add-to-cart"><a href="#"><span>Thêm Vào Giỏ Hàng</span></a></div>
-                          </div>
-                        </div>
-                        <div class="caption product-detail text-center">
-                          <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-                          <h6 data-name="product_name" class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">New LCDScreen and HD Vide..</a></h6>
-                          <span class="price"><span class="amount"><span class="currencySymbol">VND</span>xx.xxx</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane" id="Bestsellers">
-                <div class="Bestsellers owl-carousel">
-                  <div class="product-grid">
-                    <div class="item">
-                      <div class="product-thumb  mb_30">
-                        <div class="image product-imageblock"> <a href="<%=request.getContextPath() %>/public/product_detail_page.jsp"> <img data-name="product_image" src="<%=request.getContextPath() %>/templates/public/assets/images/product/product1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="<%=request.getContextPath() %>/templates/public/assets/images/product/product1-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
-                          <div class="button-group text-center">
-                            <div class="wishlist"><a href="#"><span>Danh Sách Yêu Thích</span></a></div>
-                            <div class="quickview"><a href="#"><span>Xem Nhanh</span></a></div>
-                            <div class="compare"><a href="#"><span>So Sánh</span></a></div>
-                            <div class="add-to-cart"><a href="#"><span>Thêm Vào Giỏ Hàng</span></a></div>
-                          </div>
-                        </div>
-                        <div class="caption product-detail text-center">
-                          <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-                          <h6 data-name="product_name" class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">New LCDScreen and HD Vide..</a></h6>
-                          <span class="price"><span class="amount"><span class="currencySymbol">VND</span>xx.xxx</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product-grid">
-                    <div class="item">
-                      <div class="product-thumb  mb_30">
-                        <div class="image product-imageblock"> <a href="<%=request.getContextPath() %>/public/product_detail_page.jsp"> <img data-name="product_image" src="<%=request.getContextPath() %>/templates/public/assets/images/product/product3.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="<%=request.getContextPath() %>/templates/public/assets/images/product/product3-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
-                          <div class="button-group text-center">
-                            <div class="wishlist"><a href="#"><span>Danh Sách Yêu Thích</span></a></div>
-                            <div class="quickview"><a href="#"><span>Xem Nhanh</span></a></div>
-                            <div class="compare"><a href="#"><span>So Sánh</span></a></div>
-                            <div class="add-to-cart"><a href="#"><span>Thêm Vào Giỏ Hàng</span></a></div>
-                          </div>
-                        </div>
-                        <div class="caption product-detail text-center">
-                          <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-                          <h6 data-name="product_name" class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">New LCDScreen and HD Vide..</a></h6>
-                          <span class="price"><span class="amount"><span class="currencySymbol">VND</span>xx.xxx</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product-grid">
-                    <div class="item">
-                      <div class="product-thumb  mb_30">
-                        <div class="image product-imageblock"> <a href="<%=request.getContextPath() %>/public/product_detail_page.jsp"> <img data-name="product_image" src="<%=request.getContextPath() %>/templates/public/assets/images/product/product5.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="<%=request.getContextPath() %>/templates/public/assets/images/product/product5-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
-                          <div class="button-group text-center">
-                            <div class="wishlist"><a href="#"><span>Danh Sách Yêu Thích</span></a></div>
-                            <div class="quickview"><a href="#"><span>Xem Nhanh</span></a></div>
-                            <div class="compare"><a href="#"><span>So Sánh</span></a></div>
-                            <div class="add-to-cart"><a href="#"><span>Thêm Vào Giỏ Hàng</span></a></div>
-                          </div>
-                        </div>
-                        <div class="caption product-detail text-center">
-                          <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-                          <h6 data-name="product_name" class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">New LCDScreen and HD Vide..</a></h6>
-                          <span class="price"><span class="amount"><span class="currencySymbol">VND</span>xx.xxx</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product-grid">
-                    <div class="item">
-                      <div class="product-thumb  mb_30">
-                        <div class="image product-imageblock"> <a href="<%=request.getContextPath() %>/public/product_detail_page.jsp"> <img data-name="product_image" src="<%=request.getContextPath() %>/templates/public/assets/images/product/product6.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="<%=request.getContextPath() %>/templates/public/assets/images/product/product6-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
-                          <div class="button-group text-center">
-                            <div class="wishlist"><a href="#"><span>Danh Sách Yêu Thích</span></a></div>
-                            <div class="quickview"><a href="#"><span>Xem Nhanh</span></a></div>
-                            <div class="compare"><a href="#"><span>So Sánh</span></a></div>
-                            <div class="add-to-cart"><a href="#"><span>Thêm Vào Giỏ Hàng</span></a></div>
-                          </div>
-                        </div>
-                        <div class="caption product-detail text-center">
-                          <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-                          <h6 data-name="product_name" class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">New LCDScreen and HD Vide..</a></h6>
-                          <span class="price"><span class="amount"><span class="currencySymbol">VND</span>xx.xxx</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product-grid">
-                    <div class="item">
-                      <div class="product-thumb  mb_30">
-                        <div class="image product-imageblock"> <a href="<%=request.getContextPath() %>/public/product_detail_page.jsp"> <img data-name="product_image" src="<%=request.getContextPath() %>/templates/public/assets/images/product/product8.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="<%=request.getContextPath() %>/templates/public/assets/images/product/product8-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
-                          <div class="button-group text-center">
-                           <div class="wishlist"><a href="#"><span>Danh Sách Yêu Thích</span></a></div>
-                            <div class="quickview"><a href="#"><span>Xem Nhanh</span></a></div>
-                            <div class="compare"><a href="#"><span>So Sánh</span></a></div>
-                            <div class="add-to-cart"><a href="#"><span>Thêm Vào Giỏ Hàng</span></a></div>
-                          </div>
-                        </div>
-                        <div class="caption product-detail text-center">
-                          <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-                          <h6 data-name="product_name" class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">New LCDScreen and HD Vide..</a></h6>
-                          <span class="price"><span class="amount"><span class="currencySymbol">VND</span>xx.xxx</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product-grid">
-                    <div class="item">
-                      <div class="product-thumb  mb_30">
-                        <div class="image product-imageblock"> <a href="<%=request.getContextPath() %>/public/product_detail_page.jsp"> <img data-name="product_image" src="<%=request.getContextPath() %>/templates/public/assets/images/product/product10.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="<%=request.getContextPath() %>/templates/public/assets/images/product/product10-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
-                          <div class="button-group text-center">
-                            <div class="wishlist"><a href="#"><span>Danh Sách Yêu Thích</span></a></div>
-                            <div class="quickview"><a href="#"><span>Xem Nhanh</span></a></div>
-                            <div class="compare"><a href="#"><span>So Sánh</span></a></div>
-                            <div class="add-to-cart"><a href="#"><span>Thêm Vào Giỏ Hàng</span></a></div>
-                          </div>
-                        </div>
-                        <div class="caption product-detail text-center">
-                          <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-                          <h6 data-name="product_name" class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">New LCDScreen and HD Vide..</a></h6>
-                          <span class="price"><span class="amount"><span class="currencySymbol">VND</span>xx.xxx</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane" id="Featured">
-                <div class="Featured owl-carousel">
-                  <div class="product-grid">
-                    <div class="item">
-                      <div class="product-thumb  mb_30">
-                        <div class="image product-imageblock"> <a href="<%=request.getContextPath() %>/public/product_detail_page.jsp"> <img data-name="product_image" src="<%=request.getContextPath() %>/templates/public/assets/images/product/product2.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="<%=request.getContextPath() %>/templates/public/assets/images/product/product2-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
-                          <div class="button-group text-center">
-                            <div class="wishlist"><a href="#"><span>Danh Sách Yêu Thích</span></a></div>
-                            <div class="quickview"><a href="#"><span>Xem Nhanh</span></a></div>
-                            <div class="compare"><a href="#"><span>So Sánh</span></a></div>
-                            <div class="add-to-cart"><a href="#"><span>Thêm Vào Giỏ Hàng</span></a></div>
-                          </div>
-                        </div>
-                        <div class="caption product-detail text-center">
-                          <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-                          <h6 data-name="product_name" class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">New LCDScreen and HD Vide..</a></h6>
-                          <span class="price"><span class="amount"><span class="currencySymbol">VND</span>xx.xxx</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product-grid">
-                    <div class="item">
-                      <div class="product-thumb  mb_30">
-                        <div class="image product-imageblock"> <a href="<%=request.getContextPath() %>/public/product_detail_page.jsp"> <img data-name="product_image" src="<%=request.getContextPath() %>/templates/public/assets/images/product/product4.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="<%=request.getContextPath() %>/templates/public/assets/images/product/product4-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
-                          <div class="button-group text-center">
-                            <div class="wishlist"><a href="#"><span>Danh Sách Yêu Thích</span></a></div>
-                            <div class="quickview"><a href="#"><span>Xem Nhanh</span></a></div>
-                            <div class="compare"><a href="#"><span>So Sánh</span></a></div>
-                            <div class="add-to-cart"><a href="#"><span>Thêm Vào Giỏ Hàng</span></a></div>
-                          </div>
-                        </div>
-                        <div class="caption product-detail text-center">
-                          <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-                          <h6 data-name="product_name" class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">New LCDScreen and HD Vide..</a></h6>
-                          <span class="price"><span class="amount"><span class="currencySymbol">VND</span>xx.xxx</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product-grid">
-                    <div class="item">
-                      <div class="product-thumb  mb_30">
-                        <div class="image product-imageblock"> <a href="<%=request.getContextPath() %>/public/product_detail_page.jsp"> <img data-name="product_image" src="<%=request.getContextPath() %>/templates/public/assets/images/product/product6.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="<%=request.getContextPath() %>/templates/public/assets/images/product/product6-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
-                          <div class="button-group text-center">
-                            <div class="wishlist"><a href="#"><span>Danh Sách Yêu Thích</span></a></div>
-                            <div class="quickview"><a href="#"><span>Xem Nhanh</span></a></div>
-                            <div class="compare"><a href="#"><span>So Sánh</span></a></div>
-                            <div class="add-to-cart"><a href="#"><span>Thêm Vào Giỏ Hàng</span></a></div>
-                          </div>
-                        </div>
-                        <div class="caption product-detail text-center">
-                          <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-                          <h6 data-name="product_name" class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">New LCDScreen and HD Vide..</a></h6>
-                          <span class="price"><span class="amount"><span class="currencySymbol">VND</span>xx.xxx</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product-grid">
-                    <div class="item">
-                      <div class="product-thumb  mb_30">
-                        <div class="image product-imageblock"> <a href="<%=request.getContextPath() %>/public/product_detail_page.jsp"> <img data-name="product_image" src="<%=request.getContextPath() %>/templates/public/assets/images/product/product8.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="<%=request.getContextPath() %>/templates/public/assets/images/product/product8-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
-                          <div class="button-group text-center">
-                            <div class="wishlist"><a href="#"><span>Danh Sách Yêu Thích</span></a></div>
-                            <div class="quickview"><a href="#"><span>Xem Nhanh</span></a></div>
-                            <div class="compare"><a href="#"><span>So Sánh</span></a></div>
-                            <div class="add-to-cart"><a href="#"><span>Thêm Vào Giỏ Hàng</span></a></div>
-                          </div>
-                        </div>
-                        <div class="caption product-detail text-center">
-                          <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-                          <h6 data-name="product_name" class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">New LCDScreen and HD Vide..</a></h6>
-                          <span class="price"><span class="amount"><span class="currencySymbol">VND</span>xx.xxx</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product-grid">
-                    <div class="item">
-                      <div class="product-thumb  mb_30">
-                        <div class="image product-imageblock"> <a href="<%=request.getContextPath() %>/public/product_detail_page.jsp"> <img data-name="product_image" src="<%=request.getContextPath() %>/templates/public/assets/images/product/product10.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="<%=request.getContextPath() %>/templates/public/assets/images/product/product10-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
-                          <div class="button-group text-center">
-                            <div class="wishlist"><a href="#"><span>Danh Sách Yêu Thích</span></a></div>
-                            <div class="quickview"><a href="#"><span>Xem Nhanh</span></a></div>
-                            <div class="compare"><a href="#"><span>So Sánh</span></a></div>
-                            <div class="add-to-cart"><a href="#"><span>Thêm Vào Giỏ Hàng</span></a></div>
-                          </div>
-                        </div>
-                        <div class="caption product-detail text-center">
-                          <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-                          <h6 data-name="product_name" class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">New LCDScreen and HD Vide..</a></h6>
-                          <span class="price"><span class="amount"><span class="currencySymbol">VND</span>xx.xxx</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product-grid">
-                    <div class="item">
-                      <div class="product-thumb  mb_30">
-                        <div class="image product-imageblock"> <a href="<%=request.getContextPath() %>/public/product_detail_page.jsp"> <img data-name="product_image" src="<%=request.getContextPath() %>/templates/public/assets/images/product/product2.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="<%=request.getContextPath() %>/templates/public/assets/images/product/product2-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
-                          <div class="button-group text-center">
-                           <div class="wishlist"><a href="#"><span>Danh Sách Yêu Thích</span></a></div>
-                            <div class="quickview"><a href="#"><span>Xem Nhanh</span></a></div>
-                            <div class="compare"><a href="#"><span>So Sánh</span></a></div>
-                            <div class="add-to-cart"><a href="#"><span>Thêm Vào Giỏ Hàng</span></a></div>
-                          </div>
-                        </div>
-                        <div class="caption product-detail text-center">
-                          <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-                          <h6 data-name="product_name" class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">New LCDScreen and HD Vide..</a></h6>
-                          <span class="price"><span class="amount"><span class="currencySymbol">VND</span>xx.xxx</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- =====  PRODUCT TAB  END ===== -->
-          <!-- =====  SUB BANNER  STRAT ===== -->
+    <!-- =====  SUB BANNER  STRAT ===== -->
           <div class="row">
-            <div class="cms_banner mt_50">
+            <div class="cms_banner">
               <div class="col-sm-12 mt_10">
-                <div id="subbanner3" class="sub-hover">
+                <div id="subbanner3">
                   <div class="sub-img"> <a href="#"><img src="<%=request.getContextPath() %>/templates/public/assets/images/sub6.jpg" alt="Sub Banner3" class="img-responsive"></a></div>
                 </div>
               </div>
             </div>
           </div>
           <!-- =====  SUB BANNER END  ===== -->
+    <!-- =====  CONTAINER START  ===== -->
+    <div class="container">
+      <!-- =====  SUB BANNER  STRAT ===== -->
+      <!-- =====  SUB BANNER END  ===== -->
+      <div class="row ">
+      <%
+      	RemoveDuplicateElements remove = new RemoveDuplicateElements();
+      	if(request.getAttribute("listPl")!=null){
+      		ArrayList<DisplayPublic> listPl = (ArrayList<DisplayPublic>)request.getAttribute("listPl");
+      %>
+        <div class="col-sm-12 mtb_10">
+       <%
+       	if(listPl.size()>0){
+       %>
           <!-- =====  PRODUCT TAB  ===== -->
+         	<div id="product-tab" class="mt_50" style="display: none;">
+            <div class="heading-part mb_10 ">
+              <h2 class="main_title"><%=listPl.get(0).getName() %></h2>
+              <div class="nav text-right">
+	              <a href="<%=request.getContextPath() %>/public/show-more-product?id=1">Xem Thêm</a>	          
+           	  </div>
+            </div>
+            <div class="clearfix box">
+            	<a class="banner" href="<%=request.getContextPath() %>/public/show-more-product?id=1">
+					<img src="<%=request.getContextPath() %>/templates/admin/assets/images/table/imgpublic/<%=listPl.get(0).getImages() %>" width="191" height="419" alt="icon flash">
+				</a>
+				<div class="tab-content">  		 
+              <div class="tab-pane active" id="nArrivals">
+                <div class="nArrivals owl-carousel">
+                <%
+                	if(request.getAttribute("listFS")!=null){
+	                	ArrayList<ProductAdmin> listPro1 = (ArrayList<ProductAdmin>)request.getAttribute("listFS");
+	                	String images = "";
+	                	String color = "";
+	                	if(listPro1.size()>0){
+                		for(ProductAdmin objPr1: listPro1){
+              			images = objPr1.getImages();
+              			color  = objPr1.getColor();
+          %>
+            <div class="product-grid mtb_10 mtb_10">
+              <div class="item">
+                <div class="mb_30">
+                  <div class="image product-imageblock"> 
+                  	<a href="<%=request.getContextPath() %>/public/product-detail?sku=<%=objPr1.getProductSKU() %>"> 
+                  		<%
+                  		if(images!=null){
+                  			String[] image_list = images.split(",");
+            					String applicationPath = request.getServletContext().getRealPath("");
+            					String path = request.getServletContext().getRealPath("/templates/admin/assets/images/table/product/");
+            					File image = new File(path+image_list[0]);
+            					if(image.exists()){
+                  		%>
+                  		<img id="img-des<%=listPl.get(0).getId()%><%=objPr1.getProductSKU() %>" data-name="product_image" src="<%=request.getContextPath() %>/templates/admin/assets/images/table/product/<%=image_list[0] %>" alt="<%=objPr1.getName() %>" title="<%=objPr1.getName() %>" style="width: 220px; height: 293px;" class="img-responsive">
+                  		<%}else{
+                  			%>
+                      		<img id="img-des<%=listPl.get(0).getId()%><%=objPr1.getProductSKU() %>" data-name="product_image" src="<%=request.getContextPath() %>/templates/admin/assets/images/table/product/no-image-png-2.png" alt="<%=objPr1.getName() %>" title="<%=objPr1.getName() %>" style="width: 220px; height: 293px;" class="img-responsive">
+                      		<%
+                  		}}else{
+                  			%>
+                      		<img data-name="product_image" src="<%=request.getContextPath() %>/templates/admin/assets/images/table/product/no-image-png-2.png" alt="<%=objPr1.getName() %>" title="<%=objPr1.getName() %>" style="width: 220px; height: 293px;" class="img-responsive">
+                      		<%
+                  		} %>
+                  	</a>
+                  </div>
+                  <div class="caption product-detail text-center">
+                    <h6 data-name="product_name" class="product-name"><a href="<%=request.getContextPath() %>/public/product-detail?sku=<%=objPr1.getProductSKU() %>" title="Casual Shirt With Ruffle Hem"><%=objPr1.getName() %></a></h6>
+                    <span class="price"><span class="amount"><span class="currencySymbol"><%=(int)objPr1.getPrice() %></span>đ</span>
+                    </span>
+                  </div>
+                  
+                     <div class="row">
+                     <%
+                     if(images!=null&&color!=null){
+                    	 String[] oimage_list = images.split(",");
+              			String[] image_list = remove.remove_duplicate_elements_string(oimage_list, oimage_list.length);
+              			String[] ocolor_list = color.split(",");
+              			String[] color_list = remove.remove_duplicate_elements_string(ocolor_list, ocolor_list.length);
+       					String applicationPath = request.getServletContext().getRealPath("");
+       					String path = request.getServletContext().getRealPath("/templates/admin/assets/images/table/product/");
+       						for(int j=0; j<image_list.length; j++){
+       					File image = new File(path+image_list[j]);
+       					if(image.exists()){
+       						
+                  %>
+                     		<div class="col-lg-3" style="padding-right: 0px; width: 40px;">
+                     			<img id="img-icon<%=listPl.get(0).getId()%><%=objPr1.getProductSKU() %><%=j %>" src="<%=request.getContextPath() %>/templates/admin/assets/images/table/product/<%=image_list[j] %>" class="img-fluid rounded avatar-50 mr-3 img-icon" style="width: 30px; height: 30px; border-radius: 30px;" alt="image" title="<%=color_list[j]%>">
+                     		</div>
+                     		<script type="text/javascript">
+									    	$( "#img-icon<%=listPl.get(0).getId()%><%=objPr1.getProductSKU() %><%=j %>" ).click(function() {
+									    		var src_icon = $("#img-icon<%=listPl.get(0).getId()%><%=objPr1.getProductSKU() %><%=j %>").attr("src");
+									    		var src_des = $("#img-des<%=listPl.get(0).getId()%><%=objPr1.getProductSKU() %>").attr("src");
+										    	var path = src_icon.substring(0,src_icon.lastIndexOf('/'));									    		
+										    	var filename = src_icon.split("/").pop();
+										    	var path1 = src_des.substring(0,src_icon.lastIndexOf('/'));									    		
+										    	var filename1 = src_des.split("/").pop();
+										    	var newSrc = path1+"/"+filename;
+										    	$("#img-des<%=listPl.get(0).getId()%><%=objPr1.getProductSKU() %>").attr('src',newSrc);  
+									    	});
+									    	
+                    			</script>
+                     		<%}}} %>
+                    </div>
+                </div>
+              </div>
+            
+            </div>
+            <%}}}} %>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+          <!-- =====  PRODUCT TAB  END ===== -->
+          <!-- =====  PRODUCT TAB  ===== -->
+         <div id="product-tab" class="mt_50">
+            <div class="heading-part mb_10 ">
+              <h2 class="main_title"><%=listPl.get(1).getName() %></h2>
+              <div class="nav text-right">
+	              <a href="<%=request.getContextPath() %>/public/show-more-product?id=2">Xem Thêm</a>	          
+           	  </div>
+            </div>
+            <div class="clearfix box">
+            	<a class="banner" href="<%=request.getContextPath() %>/public/show-more-product?id=2">
+					<img src="<%=request.getContextPath() %>/templates/admin/assets/images/table/imgpublic/<%=listPl.get(1).getImages() %>" width="191" height="419" alt="icon flash">
+				</a>
+				<div class="tab-content">  		 
+              <div class="tab-pane active" id="nArrivals">
+                <div class="nArrivals owl-carousel">
+                 <%
+                	if(request.getAttribute("listProNew")!=null){
+	                	ArrayList<ProductAdmin> listPro1 = (ArrayList<ProductAdmin>)request.getAttribute("listProNew");
+	                	String images = "";
+	                	String color = "";
+	                	if(listPro1.size()>0){
+	                		for(ProductAdmin objPr1: listPro1){
+      	                		images = objPr1.getImages();
+                      			color = objPr1.getColor();
+                      %>
+                        <div class="product-grid mtb_10">
+                          <div class="item">
+                            <div class="mb_30">
+                              <div class="image product-imageblock">
+      							<a href="<%=request.getContextPath() %>/public/product-detail?sku=<%=objPr1.getProductSKU() %>">
+                              		<%
+                              		if(images!=null){
+                              			String[] image_list = images.split(",");
+                        					String applicationPath = request.getServletContext().getRealPath("");
+                        					String path = request.getServletContext().getRealPath("/templates/admin/assets/images/table/product/");
+                        					File image = new File(path+image_list[0]);
+                        					if(image.exists()){
+                              		%>
+                              		<img id="img-des<%=listPl.get(1).getId()%><%=objPr1.getProductSKU() %>" data-name="product_image" src="<%=request.getContextPath() %>/templates/admin/assets/images/table/product/<%=image_list[0] %>" alt="<%=objPr1.getName() %>" title="<%=objPr1.getName() %>" style="width: 220px; height: 293px;" class="img-responsive">
+                              		<%}else{
+                              			%>
+                                  		<img id="img-des<%=listPl.get(1).getId()%><%=objPr1.getProductSKU() %>" data-name="product_image" src="<%=request.getContextPath() %>/templates/admin/assets/images/table/product/no-image-png-2.png" alt="<%=objPr1.getName() %>" title="<%=objPr1.getName() %>" style="width: 220px; height: 293px;" class="img-responsive">
+                                  		<%
+                              		}}else{
+                              			%>
+                                  		<img data-name="product_image" src="<%=request.getContextPath() %>/templates/admin/assets/images/table/product/no-image-png-2.png" alt="<%=objPr1.getName() %>" title="<%=objPr1.getName() %>" style="width: 220px; height: 293px;" class="img-responsive">
+                                  		<%
+                              		} %>
+                              		 </a>
+                                
+                              </div>
+                              <div class="caption product-detail text-center">
+                                <h6 data-name="product_name" class="product-name"><a href="<%=request.getContextPath() %>/public/product-detail?sku=<%=objPr1.getProductSKU() %>" title="Casual Shirt With Ruffle Hem"><%=objPr1.getName() %></a></h6>
+                                <span class="price"><span class="amount"><span class="currencySymbol"><%=(int)objPr1.getPrice() %></span>đ</span>
+                                </span>
+                              </div>
+                              <div class="row">
+                                 <%
+                                 if(images!=null&&color!=null){
+                                	 String[] oimage_list = images.split(",");
+                          			String[] image_list = remove.remove_duplicate_elements_string(oimage_list, oimage_list.length);
+                          			String[] ocolor_list = color.split(",");
+                          			String[] color_list = remove.remove_duplicate_elements_string(ocolor_list, ocolor_list.length);
+                   					String applicationPath = request.getServletContext().getRealPath("");
+                   					String path = request.getServletContext().getRealPath("/templates/admin/assets/images/table/product/");
+                   						for(int j=0; j<image_list.length; j++){
+                   					File image = new File(path+image_list[j]);
+                   					if(image.exists()){
+                              		
+                              %>
+                                 		<div class="col-lg-3" style="padding-right: 0px; width: 40px;">
+                                 			<img id="img-icon<%=listPl.get(1).getId()%><%=objPr1.getProductSKU() %><%=j %>" src="<%=request.getContextPath() %>/templates/admin/assets/images/table/product/<%=image_list[j] %>" class="img-fluid rounded avatar-50 mr-3 img-icon" style="width: 30px; height: 30px; border-radius: 30px;" alt="image" title="<%=color_list[j]%>">
+                                 		</div>
+                                 		<script type="text/javascript">
+									    	$( "#img-icon<%=listPl.get(1).getId()%><%=objPr1.getProductSKU() %><%=j %>" ).click(function() {
+									    		var src_icon = $("#img-icon<%=listPl.get(1).getId()%><%=objPr1.getProductSKU() %><%=j %>").attr("src");
+									    		var src_des = $("#img-des<%=listPl.get(1).getId()%><%=objPr1.getProductSKU() %>").attr("src");
+										    	var path = src_icon.substring(0,src_icon.lastIndexOf('/'));									    		
+										    	var filename = src_icon.split("/").pop();
+										    	var path1 = src_des.substring(0,src_icon.lastIndexOf('/'));									    		
+										    	var filename1 = src_des.split("/").pop();
+										    	var newSrc = path1+"/"+filename;
+										    	$("#img-des<%=listPl.get(1).getId()%><%=objPr1.getProductSKU() %>").attr('src',newSrc);  
+									    	});
+									    	
+                    					</script>
+                                 		<%}}} %>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                        <%}}} %>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+          
           <div id="product-tab" class="mt_50">
             <div class="heading-part mb_10 ">
-              <h2 class="main_title">Sản Phẩm Thời Trang</h2>
+              <h2 class="main_title"><%=listPl.get(2).getName() %></h2>
+              <div class="nav text-right">
+	              <a href="<%=request.getContextPath() %>/public/show-more-product?id=3">Xem Thêm</a>	          
+           	  </div>
             </div>
-            <div class="tab-content clearfix box">
+            <div class="clearfix box">
+            	<a class="banner" href="<%=request.getContextPath() %>/public/show-more-product?id=3">
+					<img src="<%=request.getContextPath() %>/templates/admin/assets/images/table/imgpublic/<%=listPl.get(2).getImages() %>" width="191" height="419" alt="icon flash">
+				</a>
+				<div class="tab-content">  		 
               <div class="tab-pane active" id="nArrivals">
-                <div class="tab-pane" id="Featured">
-                  <div class="Featured owl-carousel">
-                    <div class="product-grid">
-                      <div class="item">
-                        <div class="product-thumb  mb_30">
-                          <div class="image product-imageblock"> <a href="<%=request.getContextPath() %>/public/product_detail_page.jsp"> <img data-name="product_image" src="<%=request.getContextPath() %>/templates/public/assets/images/product/product2.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="<%=request.getContextPath() %>/templates/public/assets/images/product/product2-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
-                            <div class="button-group text-center">
-                              <div class="wishlist"><a href="#"><span>Danh Sách Yêu Thích</span></a></div>
-                            <div class="quickview"><a href="#"><span>Xem Nhanh</span></a></div>
-                            <div class="compare"><a href="#"><span>So Sánh</span></a></div>
-                            <div class="add-to-cart"><a href="#"><span>Thêm Vào Giỏ Hàng</span></a></div>
+                <div class="nArrivals owl-carousel">
+                
+                  <%
+                	if(request.getAttribute("listProNew")!=null){
+	                	ArrayList<ProductAdmin> listPro1 = (ArrayList<ProductAdmin>)request.getAttribute("listProNew");
+	                	String images = "";
+	                	String color = "";
+	                	if(listPro1.size()>0){
+      	                	for(ProductAdmin objPr1: listPro1){
+      	                		images = objPr1.getImages();
+      	                		color = objPr1.getColor();
+                      %>
+                        <div class="product-grid mtb_10">
+                          <div class="item">
+                            <div class="mb_30">
+                              <div class="image product-imageblock">
+      							<a href="<%=request.getContextPath() %>/public/product-detail?sku=<%=objPr1.getProductSKU() %>">
+                              		<%
+                              		if(images!=null){
+                              			String[] image_list = images.split(",");
+                        					String applicationPath = request.getServletContext().getRealPath("");
+                        					String path = request.getServletContext().getRealPath("/templates/admin/assets/images/table/product/");
+                        					File image = new File(path+image_list[0]);
+                        					if(image.exists()){
+                              		%>
+                              		<img id="img-des<%=listPl.get(2).getId()%><%=objPr1.getProductSKU() %>" data-name="product_image" src="<%=request.getContextPath() %>/templates/admin/assets/images/table/product/<%=image_list[0] %>" alt="<%=objPr1.getName() %>" title="<%=objPr1.getName() %>" style="width: 220px; height: 293px;" class="img-responsive">
+                              		<%}else{
+                              			%>
+                                  		<img id="img-des<%=listPl.get(2).getId()%><%=objPr1.getProductSKU() %>" data-name="product_image" src="<%=request.getContextPath() %>/templates/admin/assets/images/table/product/no-image-png-2.png" alt="<%=objPr1.getName() %>" title="<%=objPr1.getName() %>" style="width: 220px; height: 293px;" class="img-responsive">
+                                  		<%
+                              		}}else{
+                              			%>
+                                  		<img data-name="product_image" src="<%=request.getContextPath() %>/templates/admin/assets/images/table/product/no-image-png-2.png" alt="<%=objPr1.getName() %>" title="<%=objPr1.getName() %>" style="width: 220px; height: 293px;" class="img-responsive">
+                                  		<%
+                              		} %>
+                              		 </a>
+                                
+                              </div>
+                              <div class="caption product-detail text-center">
+                                 <h6 data-name="product_name" class="product-name"><a href="<%=request.getContextPath() %>/public/product-detail?sku=<%=objPr1.getProductSKU() %>" title="Casual Shirt With Ruffle Hem"><%=objPr1.getName() %></a></h6>
+                                <span class="price"><span class="amount"><span class="currencySymbol"><%=(int)objPr1.getPrice() %></span>đ</span>
+                                </span>
+                              </div>
+                              <div class="row">
+                                 <%
+                                 if(images!=null&&color!=null){
+                                	 String[] oimage_list = images.split(",");
+                          			String[] image_list = remove.remove_duplicate_elements_string(oimage_list, oimage_list.length);
+                          			String[] ocolor_list = color.split(",");
+                          			String[] color_list = remove.remove_duplicate_elements_string(ocolor_list, ocolor_list.length);
+                   					String applicationPath = request.getServletContext().getRealPath("");
+                   					String path = request.getServletContext().getRealPath("/templates/admin/assets/images/table/product/");
+                   						for(int j=0; j<image_list.length; j++){
+                   					File image = new File(path+image_list[j]);
+                   					if(image.exists()){
+                              		
+                              %>
+                                 		<div class="col-lg-3" style="padding-right: 0px; width: 40px;">
+                                 			<img id="img-icon<%=listPl.get(2).getId()%><%=objPr1.getProductSKU() %><%=j %>" src="<%=request.getContextPath() %>/templates/admin/assets/images/table/product/<%=image_list[j] %>" class="img-fluid rounded avatar-50 mr-3 img-icon" style="width: 30px; height: 30px; border-radius: 30px;" alt="image" title="<%=color_list[j]%>">
+                                 		</div>
+                                 		<script type="text/javascript">
+									    	$( "#img-icon<%=listPl.get(2).getId()%><%=objPr1.getProductSKU() %><%=j %>" ).click(function() {
+									    		var src_icon = $("#img-icon<%=listPl.get(2).getId()%><%=objPr1.getProductSKU() %><%=j %>").attr("src");
+									    		var src_des = $("#img-des<%=listPl.get(2).getId()%><%=objPr1.getProductSKU() %>").attr("src");
+										    	var path = src_icon.substring(0,src_icon.lastIndexOf('/'));									    		
+										    	var filename = src_icon.split("/").pop();
+										    	var path1 = src_des.substring(0,src_icon.lastIndexOf('/'));									    		
+										    	var filename1 = src_des.split("/").pop();
+										    	var newSrc = path1+"/"+filename;
+										    	$("#img-des<%=listPl.get(2).getId()%><%=objPr1.getProductSKU() %>").attr('src',newSrc);  
+									    	});
+									    	
+                    					</script>
+                                 		<%}}} %>
+                                </div>
                             </div>
                           </div>
-                          <div class="caption product-detail text-center">
-                            <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-                            <h6 data-name="product_name" class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">New LCDScreen and HD Vide..</a></h6>
-                            <span class="price"><span class="amount"><span class="currencySymbol">VND</span>xx.xxx</span>
-                            </span>
-                          </div>
+                          
                         </div>
-                      </div>
-                    </div>
-                    <div class="product-grid">
-                      <div class="item">
-                        <div class="product-thumb  mb_30">
-                          <div class="image product-imageblock"> <a href="<%=request.getContextPath() %>/public/product_detail_page.jsp"> <img data-name="product_image" src="<%=request.getContextPath() %>/templates/public/assets/images/product/product4.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="<%=request.getContextPath() %>/templates/public/assets/images/product/product4-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
-                            <div class="button-group text-center">
-                              <div class="wishlist"><a href="#"><span>Danh Sách Yêu Thích</span></a></div>
-                            <div class="quickview"><a href="#"><span>Xem Nhanh</span></a></div>
-                            <div class="compare"><a href="#"><span>So Sánh</span></a></div>
-                            <div class="add-to-cart"><a href="#"><span>Thêm Vào Giỏ Hàng</span></a></div>
+                        <%}}} %>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+          <div id="product-tab" class="mt_50">
+            <div class="heading-part mb_10 ">
+              <h2 class="main_title"><%=listPl.get(3).getName() %></h2>
+             <div class="nav text-right">
+	              <a href="<%=request.getContextPath() %>/public/show-more-product?id=4">Xem Thêm</a>	          
+           	  </div>
+            </div>
+            <div class="clearfix box">
+            	<a class="banner" href="<%=request.getContextPath() %>/public/show-more-product?id=4">
+					<img src="<%=request.getContextPath() %>/templates/admin/assets/images/table/imgpublic/<%=listPl.get(3).getImages() %>" width="191" height="419" alt="icon flash">
+				</a>
+				<div class="tab-content">  		 
+              <div class="tab-pane active" id="nArrivals">
+                <div class="nArrivals owl-carousel">
+                  	 <%
+                	if(request.getAttribute("listPoloShirt")!=null){
+	                	ArrayList<ProductAdmin> listPro1 = (ArrayList<ProductAdmin>)request.getAttribute("listPoloShirt");
+	                	String images = "";
+	                	String color = "";
+	                	if(listPro1.size()>0){
+      	                	for(ProductAdmin objPr1: listPro1){
+      	                		images = objPr1.getImages();
+      	                		color = objPr1.getColor();
+                      %>
+                        <div class="product-grid mtb_10">
+                          <div class="item">
+                            <div class="mb_30">
+                              <div class="image product-imageblock">
+      							<a href="<%=request.getContextPath() %>/public/product-detail?sku=<%=objPr1.getProductSKU() %>">
+                              		<%
+                              		if(images!=null){
+                              			String[] image_list = images.split(",");
+                        					String applicationPath = request.getServletContext().getRealPath("");
+                        					String path = request.getServletContext().getRealPath("/templates/admin/assets/images/table/product/");
+                        					File image = new File(path+image_list[0]);
+                        					if(image.exists()){
+                              		%>
+                              		<img id="img-des<%=listPl.get(3).getId()%><%=objPr1.getProductSKU() %>" data-name="product_image" src="<%=request.getContextPath() %>/templates/admin/assets/images/table/product/<%=image_list[0] %>" alt="<%=objPr1.getName() %>" title="<%=objPr1.getName() %>" style="width: 220px; height: 293px;" class="img-responsive">
+                              		<%}else{
+                              			%>
+                                  		<img id="img-des<%=listPl.get(3).getId()%><%=objPr1.getProductSKU() %>" data-name="product_image" src="<%=request.getContextPath() %>/templates/admin/assets/images/table/product/no-image-png-2.png" alt="<%=objPr1.getName() %>" title="<%=objPr1.getName() %>" style="width: 220px; height: 293px;" class="img-responsive">
+                                  		<%
+                              		}}else{
+                              			%>
+                                  		<img  data-name="product_image" src="<%=request.getContextPath() %>/templates/admin/assets/images/table/product/no-image-png-2.png" alt="" title="" style="width: 220px; height: 293px;" class="img-responsive">
+                                  		<%
+                              		} %>
+                              		 </a>
+                                
+                              </div>
+                              <div class="caption product-detail text-center">
+                                <h6 data-name="product_name" class="product-name"><a href="<%=request.getContextPath() %>/public/product-detail?sku=<%=objPr1.getProductSKU() %>" title="Casual Shirt With Ruffle Hem"><%=objPr1.getName() %></a></h6>
+                                <span class="price"><span class="amount"><span class="currencySymbol"><%=(int)objPr1.getPrice() %></span>đ</span>
+                                </span>
+                              </div>
+                              <div class="row">
+                                 <%
+                                 if(images!=null&&color!=null){
+                                	 String[] oimage_list = images.split(",");
+                          			String[] image_list = remove.remove_duplicate_elements_string(oimage_list, oimage_list.length);
+                          			String[] ocolor_list = color.split(",");
+                          			String[] color_list = remove.remove_duplicate_elements_string(ocolor_list, ocolor_list.length);
+                         			int index = 0;
+                   					String applicationPath = request.getServletContext().getRealPath("");
+                   					String path = request.getServletContext().getRealPath("/templates/admin/assets/images/table/product/");
+                   						for(int j=0; j<image_list.length; j++){
+                   							index=j;
+                   					File image = new File(path+image_list[j]);
+                   					if(image.exists()){
+                              		
+                              %>
+                                 		<div class="col-lg-3" style="padding-right: 0px; width: 40px;">
+                                 			<img id="img-icon<%=listPl.get(3).getId()%><%=objPr1.getProductSKU() %><%=j %>" src="<%=request.getContextPath() %>/templates/admin/assets/images/table/product/<%=image_list[j] %>" class="img-fluid rounded avatar-50 mr-3 img-icon" style="width: 30px; height: 30px; border-radius: 30px;" alt="image" title="<%=color_list[j]%>">
+                                 		</div>
+                                 		 <script type="text/javascript">
+									    	$( "#img-icon<%=listPl.get(3).getId()%><%=objPr1.getProductSKU() %><%=index %>" ).click(function() {
+									    		var src_icon = $("#img-icon<%=listPl.get(3).getId()%><%=objPr1.getProductSKU() %><%=index %>").attr("src");
+									    		var src_des = $("#img-des<%=listPl.get(3).getId()%><%=objPr1.getProductSKU() %>").attr("src");
+										    	var path = src_icon.substring(0,src_icon.lastIndexOf('/'));									    		
+										    	var filename = src_icon.split("/").pop();
+										    	var path1 = src_des.substring(0,src_icon.lastIndexOf('/'));									    		
+										    	var filename1 = src_des.split("/").pop();
+										    	var newSrc = path1+"/"+filename;
+										    	$("#img-des<%=listPl.get(3).getId()%><%=objPr1.getProductSKU() %>").attr('src',newSrc);  
+										    	
+									    	});
+									    	
+						                 </script>
+                                 		<%}}} %>
+                                </div>
                             </div>
                           </div>
-                          <div class="caption product-detail text-center">
-                            <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-                            <h6 data-name="product_name" class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">New LCDScreen and HD Vide..</a></h6>
-                            <span class="price"><span class="amount"><span class="currencySymbol">VND</span>xx.xxx</span>
-                            </span>
-                          </div>
+                         
                         </div>
-                      </div>
-                    </div>
-                    <div class="product-grid">
-                      <div class="item">
-                        <div class="product-thumb  mb_30">
-                          <div class="image product-imageblock"> <a href="<%=request.getContextPath() %>/public/product_detail_page.jsp"> <img data-name="product_image" src="<%=request.getContextPath() %>/templates/public/assets/images/product/product6.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="<%=request.getContextPath() %>/templates/public/assets/images/product/product6-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
-                            <div class="button-group text-center">
-								<div class="wishlist"><a href="#"><span>Danh Sách Yêu Thích</span></a></div>
-								<div class="quickview"><a href="#"><span>Xem Nhanh</span></a></div>
-								<div class="compare"><a href="#"><span>So Sánh</span></a></div>
-								<div class="add-to-cart"><a href="#"><span>Thêm Vào Giỏ Hàng</span></a></div>
+                        <%}}} %>
+                </div>        
+              </div>
+            </div>
+            </div>
+          </div>
+          <div id="product-tab" class="mt_50">
+            <div class="heading-part mb_10 ">
+              <h2 class="main_title"><%=listPl.get(4).getName() %></h2>
+              <div class="nav text-right">
+	              <a href="<%=request.getContextPath() %>/public/show-more-product?id=5">Xem Thêm</a>	          
+           	  </div>
+            </div>
+            <div class="clearfix box">
+            	<a class="banner" href="<%=request.getContextPath() %>/public/show-more-product?id=5">
+					<img src="<%=request.getContextPath() %>/templates/admin/assets/images/table/imgpublic/<%=listPl.get(4).getImages() %>" width="191" height="419" alt="icon flash">
+				</a>
+				<div class="tab-content">  		 
+              <div class="tab-pane active" id="nArrivals">
+                <div class="nArrivals owl-carousel">
+                
+                  <%
+                	if(request.getAttribute("listJean")!=null){
+	                	ArrayList<ProductAdmin> listPro1 = (ArrayList<ProductAdmin>)request.getAttribute("listJean");
+	                	String images = "";
+	                	String color = "";
+	                	if(listPro1.size()>0){
+      	                	for(ProductAdmin objPr1: listPro1){
+      	                		images = objPr1.getImages();
+      	                		color = objPr1.getColor();
+                      %>
+                        <div class="product-grid mtb_10">
+                          <div class="item">
+                            <div class="mb_30">
+                              <div class="image product-imageblock">
+      							<a href="<%=request.getContextPath() %>/public/product-detail?sku=<%=objPr1.getProductSKU() %>">
+                              		<%
+                              		if(images!=null){
+                              			String[] image_list = images.split(",");
+                        					String applicationPath = request.getServletContext().getRealPath("");
+                        					String path = request.getServletContext().getRealPath("/templates/admin/assets/images/table/product/");
+                        					File image = new File(path+image_list[0]);
+                        					if(image.exists()){
+                              		%>
+                              		<img id="img-des<%=listPl.get(4).getId()%><%=objPr1.getProductSKU() %>" data-name="product_image" src="<%=request.getContextPath() %>/templates/admin/assets/images/table/product/<%=image_list[0] %>" alt="<%=objPr1.getName() %>" title="<%=objPr1.getName() %>" style="width: 220px; height: 293px;" class="img-responsive">
+                              		<%}else{
+                              			%>
+                                  		<img id="img-des<%=listPl.get(4).getId()%><%=objPr1.getProductSKU() %>" data-name="product_image" src="<%=request.getContextPath() %>/templates/admin/assets/images/table/product/no-image-png-2.png" alt="<%=objPr1.getName() %>" title="<%=objPr1.getName() %>" style="width: 220px; height: 293px;" class="img-responsive">
+                                  		<%
+                              		}}else{
+                              			%>
+                                  		<img data-name="product_image" src="<%=request.getContextPath() %>/templates/admin/assets/images/table/product/no-image-png-2.png" alt="<%=objPr1.getName() %>" title="<%=objPr1.getName() %>" style="width: 220px; height: 293px;" class="img-responsive">
+                                  		<%
+                              		} %>
+                              		 </a>
+                                
+                              </div>
+                              <div class="caption product-detail text-center">
+                                 <h6 data-name="product_name" class="product-name"><a href="<%=request.getContextPath() %>/public/product-detail?sku=<%=objPr1.getProductSKU() %>" title="Casual Shirt With Ruffle Hem"><%=objPr1.getName() %></a></h6>
+                                <span class="price"><span class="amount"><span class="currencySymbol"><%=(int)objPr1.getPrice() %></span>đ</span>
+                                </span>
+                              </div>
+                              <div class="row">
+                                 <%
+                                 if(images!=null&&color!=null){
+                                	 String[] oimage_list = images.split(",");
+                          			String[] image_list = remove.remove_duplicate_elements_string(oimage_list, oimage_list.length);
+                          			String[] ocolor_list = color.split(",");
+                          			String[] color_list = remove.remove_duplicate_elements_string(ocolor_list, ocolor_list.length);
+                   					String applicationPath = request.getServletContext().getRealPath("");
+                   					String path = request.getServletContext().getRealPath("/templates/admin/assets/images/table/product/");
+                   						for(int j=0; j<image_list.length; j++){
+                   					File image = new File(path+image_list[j]);
+                   					if(image.exists()){
+                              		
+                              %>
+                                 		<div class="col-lg-3" style="padding-right: 0px; width: 40px;">
+                                 			<img id="img-icon<%=listPl.get(4).getId()%><%=objPr1.getProductSKU() %><%=j %>" src="<%=request.getContextPath() %>/templates/admin/assets/images/table/product/<%=image_list[j] %>" class="img-fluid rounded avatar-50 mr-3 img-icon" style="width: 30px; height: 30px; border-radius: 30px;" alt="image" title="<%=color_list[j]%>">
+                                 		</div>
+                                 		<script type="text/javascript">
+									    	$( "#img-icon<%=listPl.get(4).getId()%><%=objPr1.getProductSKU() %><%=j %>" ).click(function() {
+									    		var src_icon = $("#img-icon<%=listPl.get(4).getId()%><%=objPr1.getProductSKU() %><%=j %>").attr("src");
+									    		var src_des = $("#img-des<%=listPl.get(4).getId()%><%=objPr1.getProductSKU() %>").attr("src");
+										    	var path = src_icon.substring(0,src_icon.lastIndexOf('/'));									    		
+										    	var filename = src_icon.split("/").pop();
+										    	var path1 = src_des.substring(0,src_icon.lastIndexOf('/'));									    		
+										    	var filename1 = src_des.split("/").pop();
+										    	var newSrc = path1+"/"+filename;
+										    	$("#img-des<%=listPl.get(4).getId()%><%=objPr1.getProductSKU() %>").attr('src',newSrc);  
+									    	});
+                    					</script>
+                                 		<%}}} %>
+                                </div>
                             </div>
                           </div>
-                          <div class="caption product-detail text-center">
-                            <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-                            <h6 data-name="product_name" class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">New LCDScreen and HD Vide..</a></h6>
-                            <span class="price"><span class="amount"><span class="currencySymbol">VND</span>xx.xxx</span>
-                            </span>
-                          </div>
                         </div>
-                      </div>
-                    </div>
-                    <div class="product-grid">
-                      <div class="item">
-                        <div class="product-thumb  mb_30">
-                          <div class="image product-imageblock"> <a href="<%=request.getContextPath() %>/public/product_detail_page.jsp"> <img data-name="product_image" src="<%=request.getContextPath() %>/templates/public/assets/images/product/product8.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="<%=request.getContextPath() %>/templates/public/assets/images/product/product8-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
-                            <div class="button-group text-center">
-								<div class="wishlist"><a href="#"><span>Danh Sách Yêu Thích</span></a></div>
-								<div class="quickview"><a href="#"><span>Xem Nhanh</span></a></div>
-								<div class="compare"><a href="#"><span>So Sánh</span></a></div>
-								<div class="add-to-cart"><a href="#"><span>Thêm Vào Giỏ Hàng</span></a></div>
-                            </div>
-                          </div>
-                          <div class="caption product-detail text-center">
-                            <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-                            <h6 data-name="product_name" class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">New LCDScreen and HD Vide..</a></h6>
-                            <span class="price"><span class="amount"><span class="currencySymbol">VND</span>xx.xxx</span>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="product-grid">
-                      <div class="item">
-                        <div class="product-thumb  mb_30">
-                          <div class="image product-imageblock"> <a href="<%=request.getContextPath() %>/public/product_detail_page.jsp"> <img data-name="product_image" src="<%=request.getContextPath() %>/templates/public/assets/images/product/product10.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="<%=request.getContextPath() %>/templates/public/assets/images/product/product10-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
-                            <div class="button-group text-center">
-								<div class="wishlist"><a href="#"><span>Danh Sách Yêu Thích</span></a></div>
-								<div class="quickview"><a href="#"><span>Xem Nhanh</span></a></div>
-								<div class="compare"><a href="#"><span>So Sánh</span></a></div>
-								<div class="add-to-cart"><a href="#"><span>Thêm Vào Giỏ Hàng</span></a></div>
-                            </div>
-                          </div>
-                          <div class="caption product-detail text-center">
-                            <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-                            <h6 data-name="product_name" class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">New LCDScreen and HD Vide..</a></h6>
-                            <span class="price"><span class="amount"><span class="currencySymbol">VND</span>xx.xxx</span>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="product-grid">
-                      <div class="item">
-                        <div class="product-thumb  mb_30">
-                          <div class="image product-imageblock"> <a href="<%=request.getContextPath() %>/public/product_detail_page.jsp"> <img data-name="product_image" src="<%=request.getContextPath() %>/templates/public/assets/images/product/product2.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="<%=request.getContextPath() %>/templates/public/assets/images/product/product2-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
-                            <div class="button-group text-center">
-								<div class="wishlist"><a href="#"><span>Danh Sách Yêu Thích</span></a></div>
-								<div class="quickview"><a href="#"><span>Xem Nhanh</span></a></div>
-								<div class="compare"><a href="#"><span>So Sánh</span></a></div>
-								<div class="add-to-cart"><a href="#"><span>Thêm Vào Giỏ Hàng</span></a></div>
-                            </div>
-                          </div>
-                          <div class="caption product-detail text-center">
-                            <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-                            <h6 data-name="product_name" class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">New LCDScreen and HD Vide..</a></h6>
-                            <span class="price"><span class="amount"><span class="currencySymbol">VND</span>xx.xxx</span>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                        <%}}} %>
                   </div>
                 </div>
               </div>
+            </div>
+            </div>
+          <div id="product-tab" class="mt_50">
+            <div class="heading-part mb_10 ">
+              <h2 class="main_title"><%=listPl.get(5).getName() %></h2>
+              <div class="nav text-right">
+	              <a href="<%=request.getContextPath() %>/public/show-more-product?id=6" >Xem Thêm</a>	          
+           	  </div>
+            </div>
+            <div class="clearfix box">
+            	<a class="banner" href="<%=request.getContextPath() %>/public/show-more-product?id=6">
+					<img src="<%=request.getContextPath() %>/templates/admin/assets/images/table/imgpublic/<%=listPl.get(5).getImages() %>" width="191" height="419" alt="icon flash">
+				</a>
+				<div class="tab-content">  		 
+              <div class="tab-pane active" id="nArrivals">
+                <div class="nArrivals owl-carousel">
+                
+                  <%
+                	if(request.getAttribute("listOffice")!=null){
+	                	ArrayList<ProductAdmin> listPro1 = (ArrayList<ProductAdmin>)request.getAttribute("listOffice");
+	                	String images = "";
+	                	String color = "";
+	                	if(listPro1.size()>0){
+      	                	for(ProductAdmin objPr1: listPro1){
+      	                		images = objPr1.getImages();
+      	                		color = objPr1.getColor();
+                      %>
+                        <div class="product-grid mtb_10">
+                          <div class="item">
+                            <div class="mb_30">
+                              <div class="image product-imageblock">
+      							<a href="<%=request.getContextPath() %>/public/product-detail?sku=<%=objPr1.getProductSKU() %>">
+                              		<%
+                              		if(images!=null){
+                              			String[] image_list = images.split(",");
+                        					String applicationPath = request.getServletContext().getRealPath("");
+                        					String path = request.getServletContext().getRealPath("/templates/admin/assets/images/table/product/");
+                        					File image = new File(path+image_list[0]);
+                        					if(image.exists()){
+                              		%>
+                              		<img id="img-des<%=listPl.get(5).getId()%><%=objPr1.getProductSKU() %>" data-name="product_image" src="<%=request.getContextPath() %>/templates/admin/assets/images/table/product/<%=image_list[0] %>" alt="<%=objPr1.getName() %>" title="<%=objPr1.getName() %>" style="width: 220px; height: 293px;" class="img-responsive">
+                              		<%}else{
+                              			%>
+                                  		<img id="img-des<%=listPl.get(5).getId()%><%=objPr1.getProductSKU() %>" data-name="product_image" src="<%=request.getContextPath() %>/templates/admin/assets/images/table/product/no-image-png-2.png" alt="<%=objPr1.getName() %>" title="<%=objPr1.getName() %>" style="width: 220px; height: 293px;" class="img-responsive">
+                                  		<%
+                              		}}else{
+                              			%>
+                                  		<img data-name="product_image" src="<%=request.getContextPath() %>/templates/admin/assets/images/table/product/no-image-png-2.png" alt="<%=objPr1.getName() %>" title="<%=objPr1.getName() %>" style="width: 220px; height: 293px;" class="img-responsive">
+                                  		<%
+                              		} %>
+                              		 </a>
+                                
+                              </div>
+                              <div class="caption product-detail text-center">
+                                <h6 data-name="product_name" class="product-name"><a href="<%=request.getContextPath() %>/public/product-detail?sku=<%=objPr1.getProductSKU() %>" title="Casual Shirt With Ruffle Hem"><%=objPr1.getName() %></a></h6>
+                                <span class="price"><span class="amount"><span class="currencySymbol"><%=(int)objPr1.getPrice() %></span>đ</span>
+                                </span>
+                              </div>
+                              <div class="row">
+                                 <%
+                                 if(images!=null&&color!=null){
+                                	 String[] oimage_list = images.split(",");
+                          			String[] image_list = remove.remove_duplicate_elements_string(oimage_list, oimage_list.length);
+                          			String[] ocolor_list = color.split(",");
+                          			String[] color_list = remove.remove_duplicate_elements_string(ocolor_list, ocolor_list.length);
+                   					String applicationPath = request.getServletContext().getRealPath("");
+                   					String path = request.getServletContext().getRealPath("/templates/admin/assets/images/table/product/");
+                   						for(int j=0; j<image_list.length; j++){
+                   					File image = new File(path+image_list[j]);
+                   					if(image.exists()){
+                              		
+                              %>
+                                 		<div class="col-lg-3" style="padding-right: 0px; width: 40px;">
+                                 			<img id="img-icon<%=listPl.get(5).getId()%><%=objPr1.getProductSKU() %><%=j %>" src="<%=request.getContextPath() %>/templates/admin/assets/images/table/product/<%=image_list[j] %>" class="img-fluid rounded avatar-50 mr-3 img-icon" style="width: 30px; height: 30px; border-radius: 30px;" alt="image" title="<%=color_list[j]%>">
+                                 		</div>
+                                 		<script type="text/javascript">
+									    	$( "#img-icon<%=listPl.get(5).getId()%><%=objPr1.getProductSKU() %><%=j %>" ).click(function() {
+									    		var src_icon = $("#img-icon<%=listPl.get(5).getId()%><%=objPr1.getProductSKU() %><%=j %>").attr("src");
+									    		var src_des = $("#img-des<%=listPl.get(5).getId()%><%=objPr1.getProductSKU() %>").attr("src");
+										    	var path = src_icon.substring(0,src_icon.lastIndexOf('/'));									    		
+										    	var filename = src_icon.split("/").pop();
+										    	var path1 = src_des.substring(0,src_icon.lastIndexOf('/'));									    		
+										    	var filename1 = src_des.split("/").pop();
+										    	var newSrc = path1+"/"+filename;
+										    	$("#img-des<%=listPl.get(5).getId()%><%=objPr1.getProductSKU() %>").attr('src',newSrc);  
+									    	});
+                    					</script>
+                                 		<%}}} %>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                        <%}}} %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+          <div id="product-tab" class="mt_50">
+            <div class="heading-part mb_10 ">
+              <h2 class="main_title"><%=listPl.get(6).getName() %></h2>
+              <div class="nav text-right">
+	              <a href="<%=request.getContextPath() %>/public/show-more-product?id=7">Xem Thêm</a>	          
+           	  </div>
+            </div>
+            <div class="clearfix box">
+            	<a class="banner" href="<%=request.getContextPath() %>/public/show-more-product?id=7">
+					<img src="<%=request.getContextPath() %>/templates/admin/assets/images/table/imgpublic/<%=listPl.get(6).getImages() %>" width="191" height="419" alt="icon flash">
+				</a>
+				<div class="tab-content">  		 
+              <div class="tab-pane active" id="nArrivals">
+                <div class="nArrivals owl-carousel">
+                
+                  <%
+                	if(request.getAttribute("listSport")!=null){
+	                	ArrayList<ProductAdmin> listPro1 = (ArrayList<ProductAdmin>)request.getAttribute("listSport");
+	                	String images = "";
+	                	String color = "";
+	                	if(listPro1.size()>0){
+      	                	for(ProductAdmin objPr1: listPro1){
+      	                		images = objPr1.getImages();
+      	                		color = objPr1.getColor();
+                      %>
+                        <div class="product-grid mtb_10">
+                          <div class="item">
+                            <div class="mb_30">
+                              <div class="image product-imageblock">
+      							<a href="<%=request.getContextPath() %>/public/product-detail?sku=<%=objPr1.getProductSKU() %>">
+                              		<%
+                              		if(images!=null){
+                              			String[] image_list = images.split(",");
+                        					String applicationPath = request.getServletContext().getRealPath("");
+                        					String path = request.getServletContext().getRealPath("/templates/admin/assets/images/table/product/");
+                        					File image = new File(path+image_list[0]);
+                        					if(image.exists()){
+                              		%>
+                              		<img id="img-des<%=listPl.get(6).getId()%><%=objPr1.getProductSKU() %>" data-name="product_image" src="<%=request.getContextPath() %>/templates/admin/assets/images/table/product/<%=image_list[0] %>" alt="<%=objPr1.getName() %>" title="<%=objPr1.getName() %>" style="width: 220px; height: 293px;" class="img-responsive">
+                              		<%}else{
+                              			%>
+                                  		<img id="img-des<%=listPl.get(6).getId()%><%=objPr1.getProductSKU() %>" data-name="product_image" src="<%=request.getContextPath() %>/templates/admin/assets/images/table/product/no-image-png-2.png" alt="<%=objPr1.getName() %>" title="<%=objPr1.getName() %>" style="width: 220px; height: 293px;" class="img-responsive">
+                                  		<%
+                              		}}else{
+                              			%>
+                                  		<img data-name="product_image" src="<%=request.getContextPath() %>/templates/admin/assets/images/table/product/no-image-png-2.png" alt="<%=objPr1.getName() %>" title="<%=objPr1.getName() %>" style="width: 220px; height: 293px;" class="img-responsive">
+                                  		<%
+                              		} %>
+                              		 </a>
+                                
+                              </div>
+                              <div class="caption product-detail text-center">
+                                 <h6 data-name="product_name" class="product-name"><a href="<%=request.getContextPath() %>/public/product-detail?sku=<%=objPr1.getProductSKU() %>" title="Casual Shirt With Ruffle Hem"><%=objPr1.getName() %></a></h6>
+                                <span class="price"><span class="amount"><span class="currencySymbol"><%=(int)objPr1.getPrice() %></span>đ</span>
+                                </span>
+                              </div>
+                              <div class="row">
+                                 <%
+                                 if(images!=null&&color!=null){
+                                	 String[] oimage_list = images.split(",");
+                          			String[] image_list = remove.remove_duplicate_elements_string(oimage_list, oimage_list.length);
+                          			String[] ocolor_list = color.split(",");
+                          			String[] color_list = remove.remove_duplicate_elements_string(ocolor_list, ocolor_list.length);
+                   					String applicationPath = request.getServletContext().getRealPath("");
+                   					String path = request.getServletContext().getRealPath("/templates/admin/assets/images/table/product/");
+                   						for(int j=0; j<image_list.length; j++){
+                   					File image = new File(path+image_list[j]);
+                   					if(image.exists()){
+                              		
+                              %>
+                                 		<div class="col-lg-3" style="padding-right: 0px; width: 40px;">
+                                 			<img id="img-icon<%=listPl.get(6).getId()%><%=objPr1.getProductSKU() %><%=j %>" src="<%=request.getContextPath() %>/templates/admin/assets/images/table/product/<%=image_list[j] %>" class="img-fluid rounded avatar-50 mr-3 img-icon" style="width: 30px; height: 30px; border-radius: 30px;" alt="image" title="<%=color_list[j]%>">
+                                 		</div>
+                                 		<script type="text/javascript">
+									    	$( "#img-icon<%=listPl.get(6).getId()%><%=objPr1.getProductSKU() %><%=j %>" ).click(function() {
+									    		var src_icon = $("#img-icon<%=listPl.get(6).getId()%><%=objPr1.getProductSKU() %><%=j %>").attr("src");
+									    		var src_des = $("#img-des<%=listPl.get(6).getId()%><%=objPr1.getProductSKU() %>").attr("src");
+										    	var path = src_icon.substring(0,src_icon.lastIndexOf('/'));									    		
+										    	var filename = src_icon.split("/").pop();
+										    	var path1 = src_des.substring(0,src_icon.lastIndexOf('/'));									    		
+										    	var filename1 = src_des.split("/").pop();
+										    	var newSrc = path1+"/"+filename;
+										    	$("#img-des<%=listPl.get(6).getId()%><%=objPr1.getProductSKU() %>").attr('src',newSrc);  
+									    	});
+                    					</script>
+                                 		<%}}} %>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                        <%}}} %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+          <div id="product-tab" class="mt_50">
+            <div class="heading-part mb_10 ">
+              <h2 class="main_title"><%=listPl.get(7).getName() %></h2>
+              <div class="nav text-right">
+	              <a href="<%=request.getContextPath() %>/public/show-more-product?id=8" >Xem Thêm</a>	          
+           	  </div>
+            </div>
+            <div class="clearfix box">
+            	<a class="banner" href="<%=request.getContextPath() %>/public/show-more-product?id=8">
+					<img src="<%=request.getContextPath() %>/templates/admin/assets/images/table/imgpublic/<%=listPl.get(7).getImages() %>" width="191" height="419" alt="icon flash">
+				</a>
+				<div class="tab-content">  		 
+              <div class="tab-pane active" id="nArrivals">
+                <div class="nArrivals owl-carousel">
+                
+                  <%
+                	if(request.getAttribute("listAccessories")!=null){
+	                	ArrayList<ProductAdmin> listPro1 = (ArrayList<ProductAdmin>)request.getAttribute("listAccessories");
+	                	String images = "";
+	                	String color="";
+	                	if(listPro1.size()>0){
+      	                	for(ProductAdmin objPr1: listPro1){
+      	                		images = objPr1.getImages();
+      	                		color = objPr1.getColor();
+                      %>
+                        <div class="product-grid mtb_10">
+                          <div class="item">
+                            <div class="mb_30">
+                              <div class="image product-imageblock">
+      							<a href="<%=request.getContextPath() %>/public/product-detail?sku=<%=objPr1.getProductSKU() %>">
+                              		<%
+                              		if(images!=null){
+                              			String[] image_list = images.split(",");
+                        					String applicationPath = request.getServletContext().getRealPath("");
+                        					String path = request.getServletContext().getRealPath("/templates/admin/assets/images/table/product/");
+                        					File image = new File(path+image_list[0]);
+                        					if(image.exists()){
+                              		%>
+                              		<img id="img-des<%=listPl.get(7).getId()%><%=objPr1.getProductSKU() %>" data-name="product_image" src="<%=request.getContextPath() %>/templates/admin/assets/images/table/product/<%=image_list[0] %>" alt="<%=objPr1.getName() %>" title="<%=objPr1.getName() %>" style="width: 220px; height: 293px;" class="img-responsive">
+                              		<%}else{
+                              			%>
+                                  		<img id="img-des<%=listPl.get(7).getId()%><%=objPr1.getProductSKU() %>" data-name="product_image" src="<%=request.getContextPath() %>/templates/admin/assets/images/table/product/no-image-png-2.png" alt="<%=objPr1.getName() %>" title="<%=objPr1.getName() %>" style="width: 220px; height: 293px;" class="img-responsive">
+                                  		<%
+                              		}}else{
+                              			%>
+                                  		<img data-name="product_image" src="<%=request.getContextPath() %>/templates/admin/assets/images/table/product/no-image-png-2.png" alt="<%=objPr1.getName() %>" title="<%=objPr1.getName() %>" style="width: 220px; height: 293px;" class="img-responsive">
+                                  		<%
+                              		} %>
+                              		 </a>
+                                
+                              </div>
+                              <div class="caption product-detail text-center">
+                                 <h6 data-name="product_name" class="product-name"><a href="<%=request.getContextPath() %>/public/product-detail?sku=<%=objPr1.getProductSKU() %>" title="Casual Shirt With Ruffle Hem"><%=objPr1.getName() %></a></h6>
+                                <span class="price"><span class="amount"><span class="currencySymbol"><%=(int)objPr1.getPrice() %></span>đ</span>
+                                </span>
+                              </div>
+                              <div class="row">
+                                 <%
+                                 if(images!=null&&color!=null){
+                                	 String[] oimage_list = images.split(",");
+                          			String[] image_list = remove.remove_duplicate_elements_string(oimage_list, oimage_list.length);
+                          			String[] ocolor_list = color.split(",");
+                          			String[] color_list = remove.remove_duplicate_elements_string(ocolor_list, ocolor_list.length);
+                   					String applicationPath = request.getServletContext().getRealPath("");
+                   					String path = request.getServletContext().getRealPath("/templates/admin/assets/images/table/product/");
+                   						for(int j=0; j<image_list.length; j++){
+                   					File image = new File(path+image_list[j]);
+                   					if(image.exists()){
+                              		
+                              %>
+                                 		<div class="col-lg-3" style="padding-right: 0px; width: 40px;">
+                                 			<img id="img-icon<%=listPl.get(7).getId()%><%=objPr1.getProductSKU() %><%=j %>" src="<%=request.getContextPath() %>/templates/admin/assets/images/table/product/<%=image_list[j] %>" class="img-fluid rounded avatar-50 mr-3 img-icon" style="width: 30px; height: 30px; border-radius: 30px;" alt="image" title="<%=color_list[j]%>">
+                                 		</div>
+                                 		<script type="text/javascript">
+									    	$( "#img-icon<%=listPl.get(7).getId()%><%=objPr1.getProductSKU() %><%=j %>" ).click(function() {
+									    		var src_icon = $("#img-icon<%=listPl.get(7).getId()%><%=objPr1.getProductSKU() %><%=j %>").attr("src");
+									    		var src_des = $("#img-des<%=listPl.get(7).getId()%><%=objPr1.getProductSKU() %>").attr("src");
+										    	var path = src_icon.substring(0,src_icon.lastIndexOf('/'));									    		
+										    	var filename = src_icon.split("/").pop();
+										    	var path1 = src_des.substring(0,src_icon.lastIndexOf('/'));									    		
+										    	var filename1 = src_des.split("/").pop();
+										    	var newSrc = path1+"/"+filename;
+										    	$("#img-des<%=listPl.get(7).getId()%><%=objPr1.getProductSKU() %>").attr('src',newSrc);  
+									    	});
+                    					</script>
+                                 		<%}}} %>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                        <%}}} %>
+                </div>
+              </div>
+            </div>
             </div>
           </div>
           <!-- =====  PRODUCT TAB  END ===== -->
@@ -675,58 +905,16 @@
             </div>
             <!-- =====  Blog end ===== -->
           </div>
-        </div>
-      </div>
-      <div id="brand_carouse" class="ptb_50 text-center">
-        <div class="type-01">
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="brand owl-carousel ptb_20">
-                <div class="item text-center"> <a href="#"><img src="<%=request.getContextPath() %>/templates/public/assets/images/brand/brand1.png" alt="Disney" class="img-responsive" /></a> </div>
-                <div class="item text-center"> <a href="#"><img src="<%=request.getContextPath() %>/templates/public/assets/images/brand/brand2.png" alt="Dell" class="img-responsive" /></a> </div>
-                <div class="item text-center"> <a href="#"><img src="<%=request.getContextPath() %>/templates/public/assets/images/brand/brand3.png" alt="Harley" class="img-responsive" /></a> </div>
-                <div class="item text-center"> <a href="#"><img src="<%=request.getContextPath() %>/templates/public/assets/images/brand/brand4.png" alt="Canon" class="img-responsive" /></a> </div>
-                <div class="item text-center"> <a href="#"><img src="<%=request.getContextPath() %>/templates/public/assets/images/brand/brand5.png" alt="Canon" class="img-responsive" /></a> </div>
-                <div class="item text-center"> <a href="#"><img src="<%=request.getContextPath() %>/templates/public/assets/images/brand/brand6.png" alt="Canon" class="img-responsive" /></a> </div>
-                <div class="item text-center"> <a href="#"><img src="<%=request.getContextPath() %>/templates/public/assets/images/brand/brand7.png" alt="Canon" class="img-responsive" /></a> </div>
-                <div class="item text-center"> <a href="#"><img src="<%=request.getContextPath() %>/templates/public/assets/images/brand/brand8.png" alt="Canon" class="img-responsive" /></a> </div>
-                <div class="item text-center"> <a href="#"><img src="<%=request.getContextPath() %>/templates/public/assets/images/brand/brand9.png" alt="Canon" class="img-responsive" /></a> </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="newsletters mb_50">
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="news-head pull-left">
-              <h2>ĐĂNG KÝ ĐỂ NHẬN BẢN TIN</h2>
-              <div class="new-desc">Hãy là người đầu tiên biết về Hàng mới của chúng tôi và hơn thế nữa!</div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="news-form pull-right">
-              <form onsubmit="return validatemail();" method="post">
-                <div class="form-group required">
-                  <input name="email" id="email" placeholder="Enter Your Email" class="form-control input-lg" required="" type="email">
-                  <button type="submit" class="btn btn-default btn-lg">Đăng Ký</button>
-                </div>
-              </form>
-            </div>
-          </div>
+          <%} %>
         </div>
       </div>
     </div>
+    </div>
+    
     <!-- =====  CONTAINER END  ===== -->
     <%@ include file="/templates/public/inc/footer.jsp" %>
-    </div>
   <a id="scrollup"></a>
-  <script src="<%=request.getContextPath() %>/templates/public/assets/js/jQuery_v3.1.1.min.js"></script>
-  <script src="<%=request.getContextPath() %>/templates/public/assets/js/owl.carousel.min.js"></script>
-  <script src="<%=request.getContextPath() %>/templates/public/assets/js/bootstrap.min.js"></script>
-  <script src="<%=request.getContextPath() %>/templates/public/assets/js/jquery.magnific-popup.js"></script>
-  <script src="<%=request.getContextPath() %>/templates/public/assets/js/jquery.firstVisitPopup.js"></script>
-  <script src="<%=request.getContextPath() %>/templates/public/assets/js/custom.js"></script>
+   </div>
 </body>
 
 </html>

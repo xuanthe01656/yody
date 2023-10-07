@@ -1,0 +1,37 @@
+/*order*/
+.fluid_order{
+	max-width: 750px;
+}
+.body_body_main{
+	padding: 10px;
+    background-color: #F8F8F8;
+}
+.body_body_main .body_body_head .body_body_left img{
+	height: 100%;
+	width: 100%;
+}
+.body_body_main .body_body_head .body_body_right .color_size{
+	font-size: 14px;
+	font-style: italic;
+}
+.body_body_main .body_body_head .body_body_right .quantity_order{
+	position: relative;
+    float: right;
+    top: 50%;
+    font-style: italic;
+}
+.body_body_main .body_body_head .body_body_right .price_order{
+	left: -14%;
+    top: 50%;
+    position: relative;
+}
+.body_body_main .body_body_head .body_body_right .subtotal_one{
+	position: relative;
+    float: right;
+    top: 75%;
+}
+/*search*/
+.page-item .active{
+	background-color: blue;
+	color: white;
+}

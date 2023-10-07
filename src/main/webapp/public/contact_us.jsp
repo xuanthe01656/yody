@@ -105,15 +105,6 @@
   <%@ include file="/templates/public/inc/footer.jsp" %>
   </div>
   <a id="scrollup"></a>
-  <script src="<%=request.getContextPath() %>/templates/public/assets/js/jQuery_v3.1.1.min.js"></script>
-  <script src="<%=request.getContextPath() %>/templates/public/assets/js/owl.carousel.min.js"></script>
-  <script src="<%=request.getContextPath() %>/templates/public/assets/js/bootstrap.min.js"></script>
-  <script src="<%=request.getContextPath() %>/templates/public/assets/js/jquery.magnific-popup.js"></script>
-  <script src="<%=request.getContextPath() %>/templates/public/assets/js/custom.js"></script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAT3mI0RI16q19Oxv93gSxN0cF0wfxWN6w">
-  </script>
-  <script src="<%=request.getContextPath() %>/templates/public/assets/js/map.js"></script>
-  <script src="<%=request.getContextPath() %>/templates/public/assets/js/mail.js"></script>
 </body>
 
 </html>

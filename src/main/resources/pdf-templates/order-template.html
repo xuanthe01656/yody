@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+        h1 {
+            color: #25a7e7;
+            text-align: center;
+        }
+        .order {
+            width: 100%;
+        }
+        .order, .order th, .order td {
+            border: 1px solid #25a7e7;
+            border-collapse: collapse;
+        }
+        .order th {
+            background-color: #25a7e7;
+            color: white;
+        }
+        .total {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+	<table>
+	    <tr>
+	        <td>
+	            <img width="80" src="../templates/public/assets/images/logo.svg" />
+	        </td>
+	        <td>
+	            <h1>Supply Order Form</h1>
+	        </td>
+	    </tr>
+	</table>
+	<div>
+	    <table>
+	        <tr>
+	            <td th:text="'Date: ' + ${#dates.format(order.date, 'dd/MM/yyyy')}"></td>
+	        </tr>
+	        <tr>
+	            <td th:text="'Order #: ' + ${order.orderNo}"></td>
+	        </tr>
+	        <tr>
+	            <td th:text="'Request Date: ' + ${#dates.format(order.requestDate, 'dd/MM/yyyy')}"></td>
+	        </tr>
+	        <tr>
+	            <td th:text="'Order Date: ' + ${#dates.format(order.orderDate, 'dd/MM/yyyy')}"></td>
+	        </tr>
+	    </table>
+	</div>
+	<br />
+	<table class="order">
+	    <tr>
+	        <th>Item #</th>
+	        <th>Description</th>
+	        <th>Quantity</th>
+	        <th>Unit Price</th>
+	        <th>Total</th>
+	    </tr>
+	    <tr th:each="item, iterStat: ${orderItems}">
+	        <td th:text="${iterStat.index + 1}"></td>
+	        <td th:text="${item.productName}"></td>
+	        <td th:text="${item.qty}"></td>
+	        <td th:text="${item.price}"></td>
+	        <td th:text="${item.subtotal}"></td>
+	    </tr>
+	     <tr>
+	        <td class="total" colspan="4"><b>Transport</b></td>
+	        <td><b th:text="${item.shipping}"></b></td>
+	    </tr>
+	    <tr>
+	        <td class="total" colspan="4"><b>Total</b></td>
+	        <td><b th:text="${#aggregates.sum(orderItems.{total},orderItems.{shipping})}"></b></td>
+	    </tr>
+	</table>
+</body>
+</html>
